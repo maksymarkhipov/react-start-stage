@@ -1,18 +1,12 @@
-import { useGetProductsQuery } from '../../api/apiSlice';
 import { ProductCard } from '../product-card/ProductCard';
+import { Product } from '../../types/product';
 
-import './ProductContainer.css';
+export function ProductContainer({products}: {products: Product[]}) {
+    const content = products.map((item) => <ProductCard key={item.id} data={item} />);
 
-export function ProductContainer() {
-    const {
-        data: products,
-        isSuccess,
-    } = useGetProductsQuery();
-
-    if (isSuccess) {
-        const productCards = products.map((item) => <ProductCard key={item.id} data={item} />);
-        return <div className="product-container">{productCards}</div>
-    }
-
-    return <></>;
+    return (
+        <>
+            {content};
+        </>
+    );
 }
