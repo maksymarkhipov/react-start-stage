@@ -1,5 +1,5 @@
 
-export interface IResponseProduct {
+export type ResponseProductDto = {
     id: number;
     title: string;
     price: number;
@@ -9,18 +9,18 @@ export interface IResponseProduct {
     rating: {
         rate: number;
         count: number;
-    }
-}
+    };
+};
 
-export interface IProduct {
+export type Product = {
     id: number;
     title: string;
     price: number;
     category: string;
     image: string;
-}
+};
 
-export function ResponseProductToProduct(response: IResponseProduct): IProduct {
+export function FromProductDto(response: ResponseProductDto): Product {
     return {
         id: response.id,
         title: response.title,

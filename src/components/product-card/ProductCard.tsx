@@ -1,11 +1,11 @@
 import { Card, CardContent, IconButton } from '@mui/material';
 import { ShoppingBag } from '@mui/icons-material';
 
-import './Product.css';
-import { IProduct } from '../../interfaces/IProduct';
+import './ProductCard.css';
+import { Product } from '../../types/product';
 
 
-export function Product({data}: {data: IProduct}) {
+export function ProductCard({data}: {data: Product}) {
     return(
       <Card className="product">
           <CardContent className="product-content">

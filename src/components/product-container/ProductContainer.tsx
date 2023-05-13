@@ -1,5 +1,5 @@
 import { useGetProductsQuery } from '../../api/apiSlice';
-import { Product } from '../product/Product';
+import { ProductCard } from '../product-card/ProductCard';
 
 import './ProductContainer.css';
 
@@ -10,7 +10,7 @@ export function ProductContainer() {
     } = useGetProductsQuery();
 
     if (isSuccess) {
-        const productCards = products.map((item) => <Product key={item.id} data={item} />);
+        const productCards = products.map((item) => <ProductCard key={item.id} data={item} />);
         return <div className="product-container">{productCards}</div>
     }
 
