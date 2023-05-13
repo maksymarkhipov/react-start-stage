@@ -19,7 +19,7 @@ export function ProductHeader() {
                     </div>
                 </div>
                 <div className={styles.delimiter}></div>
-                <div>
+                <div className={styles.bottom}>
                     <div>
                         <IconButton aria-label="delete">
                             <Widgets />
