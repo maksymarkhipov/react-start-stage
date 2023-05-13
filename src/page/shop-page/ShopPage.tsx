@@ -1,5 +1,5 @@
-import { ProductContainer } from '../../components/product-container/ProductContainer';
-import { ProductHeader } from '../../components/product-header/ProductHeader';
+import { ProductContainer } from './components/product-container/ProductContainer';
+import { ProductHeader } from './components/product-header/ProductHeader';
 
 import './ShopPage.css'
 import { useGetProductsQuery } from '../../api/apiSlice';

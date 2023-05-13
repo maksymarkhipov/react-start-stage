@@ -1,0 +1,21 @@
+
+.product-header-content {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+
+.titleoo {
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 35px;
+    color: #1D232C;
+}
+
+.delimiter {
+    width: 100%;
+    border-radius: 6px;
+    height: 1px;
+    background-color: #EEF0F4;
+}
