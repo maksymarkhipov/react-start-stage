@@ -4,7 +4,7 @@ import { shopPageSlice } from './shop-page/ShopPageSlice';
 
 export const store = configureStore({
    reducer: {
-      shopPageSlice: shopPageSlice.reducer,
+      shopPage: shopPageSlice.reducer,
       [apiSlice.reducerPath] : apiSlice.reducer,
    },
    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware)

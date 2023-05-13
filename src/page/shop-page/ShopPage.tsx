@@ -3,23 +3,28 @@ import { ProductHeader } from './components/product-header/ProductHeader';
 
 import styles from './ShopPage.module.css'
 import { useGetProductsQuery } from '../../api/apiSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../features/store';
+import { initProducts } from '../../features/shop-page/ShopPageSlice';
+import { useEffect } from 'react';
 
 export function ShopPage() {
-    let productContainer = <></>
-    const {
-        data: products,
-        isSuccess,
-    } = useGetProductsQuery();
+    const dispatch = useDispatch();
+    const { data: products } = useGetProductsQuery();
 
-    if (isSuccess) {
-        productContainer = <ProductContainer products={products} />
-    }
+    const viewProducts = useSelector((state: RootState) => state.shopPage.products);
+
+    useEffect(() => {
+       if (products) {
+           dispatch(initProducts(products));
+       }
+    }, [products]);
 
     return (
         <div className={styles.wrapper}>
             <ProductHeader />
             <div className={styles.productContainer}>
-                {productContainer}
+                {viewProducts ? (<ProductContainer products={viewProducts} />) : <></>}
             </div>
         </div>
     )

@@ -12,7 +12,7 @@ export function ProductSortSelector() {
     const handleChange = (event: SelectChangeEvent) => {
         const optionSelector = event.target.value;
         setProductParameter(optionSelector);
-        dispatch(changeProductSorter(optionSelector));
+        dispatch(changeProductSorter(optionSelector as ProductParameter));
     };
 
     return (
@@ -23,9 +23,7 @@ export function ProductSortSelector() {
                 value={productParameter}
                 onChange={handleChange}
             >
-                <MenuItem value="">
-                    Default sorting
-                </MenuItem>
+                <MenuItem value={ProductParameter.DEFAULT_SORTING}>{ProductParameter.DEFAULT_SORTING}</MenuItem>
                 <MenuItem value={ProductParameter.TITLE}>{ProductParameter.TITLE}</MenuItem>
                 <MenuItem value={ProductParameter.PRICE}>{ProductParameter.PRICE}</MenuItem>
                 <MenuItem value={ProductParameter.CATEGORY}>{ProductParameter.CATEGORY}</MenuItem>
