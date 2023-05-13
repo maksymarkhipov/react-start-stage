@@ -2,26 +2,33 @@ import { Card, CardContent, IconButton } from '@mui/material';
 import { ShoppingBag } from '@mui/icons-material';
 
 import './Product.css';
+import { IProduct } from '../../interfaces/IProduct';
 
 
-export function Product() {
+export function Product({data}: {data: IProduct}) {
     return(
       <Card className="product">
           <CardContent className="product-content">
-              <div className="category">
-                  Smartphones
+              <div className="top">
+                  <div className="category">
+                      {data.category}
+                  </div>
+                  <div className="title-container">
+                      <div className="title">
+                          {data.title}
+                      </div>
+                  </div>
               </div>
-              <div className="name">
-                  Apple iPhone 14 Pro, LTPO Super Retina XDR OLED 6.1"
-              </div>
-              <div className="image-container">
-                  <img className="image"
-                       src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-                       alt="stuff" />
+              <div className="center">
+                  <div className="image-container">
+                      <img className="image"
+                           src={data.image}
+                           alt="stuff" />
+                  </div>
               </div>
               <div className="bottom">
                   <div className="price">
-                      $1,200.00
+                      ${data.price}
                   </div>
                   <div className="btn-container">
                       <IconButton color="primary" aria-label="add to shopping cart">

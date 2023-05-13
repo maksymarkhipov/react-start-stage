@@ -1,2 +1,2 @@
 
-export const BASE_API_URL = 'https://fakestoreapi/';
+export const BASE_API_URL = 'https://fakestoreapi.com/';

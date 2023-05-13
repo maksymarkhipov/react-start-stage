@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShopPage } from './page/ShopPage';
+import { ShopPage } from './page/shop-page/ShopPage';
 
 function App() {
   return (
