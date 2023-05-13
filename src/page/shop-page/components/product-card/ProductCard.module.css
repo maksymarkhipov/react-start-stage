@@ -9,7 +9,7 @@
     width: 270px;
 }
 
-.product-content {
+.productContent {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -29,7 +29,7 @@
     color: var(--color-category);
 }
 
-.title-container {
+.titleContainer {
     height: 30px;
     overflow: hidden;
 }
@@ -41,7 +41,7 @@
     color: var(--color-name);
 }
 
-.image-container {
+.imageContainer {
     display: flex;
     justify-content: center;
     align-items: center;

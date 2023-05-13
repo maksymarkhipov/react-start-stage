@@ -1,12 +1,12 @@
 
-.product-header-content {
+.productHeaderContent {
     display: flex;
     flex-direction: column;
     gap: 12px;
 }
 
 
-.titleoo {
+.title {
     font-weight: 500;
     font-size: 30px;
     line-height: 35px;

@@ -6,23 +6,21 @@ import {
 } from '@mui/material';
 import { List, Widgets } from '@mui/icons-material';
 
-import './ProductHeader.css';
+import styles from './ProductHeader.module.css';
 import { ProductSortSelector } from '../product-sort-selector/ProductSortSelector';
 
 export function ProductHeader() {
     return (
         <Card>
-            <CardContent className="product-header-content">
-                <div className="top">
-                    <div className="title">
+            <CardContent className={styles.productHeaderContent}>
+                <div>
+                    <div className={styles.title}>
                         Shop
                     </div>
                 </div>
-                <div className="delimiter">
-
-                </div>
-                <div className="bottom">
-                    <div className="change-view-buttons-container">
+                <div className={styles.delimiter}></div>
+                <div>
+                    <div>
                         <IconButton aria-label="delete">
                             <Widgets />
                         </IconButton>
@@ -30,7 +28,7 @@ export function ProductHeader() {
                             <List />
                         </IconButton>
                     </div>
-                    <div className="sorting-container">
+                    <div>
                         <FormControl sx={{ m: 1, minWidth: 150 }} size="small">
                             <ProductSortSelector />
                         </FormControl>

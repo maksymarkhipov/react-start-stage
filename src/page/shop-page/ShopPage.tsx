@@ -1,7 +1,7 @@
 import { ProductContainer } from './components/product-container/ProductContainer';
 import { ProductHeader } from './components/product-header/ProductHeader';
 
-import './ShopPage.css'
+import styles from './ShopPage.module.css'
 import { useGetProductsQuery } from '../../api/apiSlice';
 
 export function ShopPage() {
@@ -16,9 +16,9 @@ export function ShopPage() {
     }
 
     return (
-        <div className="wrapper">
+        <div className={styles.wrapper}>
             <ProductHeader />
-            <div className="product-container">
+            <div className={styles.productContainer}>
                 {productContainer}
             </div>
         </div>
