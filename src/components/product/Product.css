@@ -1,0 +1,44 @@
+:root {
+    --color-category: #586A84;
+    --color-name: #0077E4;
+    --color-price: #1D232C;
+}
+
+.product {
+    max-width: 270px;
+}
+
+.product-content {
+    display: flex;
+    flex-direction: column;
+    gap: 23px;
+}
+
+.category {
+    font-size: 12px;
+    line-height: 14px;
+    color: var(--color-category);
+}
+
+.name {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: var(--color-name);
+}
+
+.image {
+    max-width: 200px;
+}
+
+.price {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
