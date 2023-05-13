@@ -11,7 +11,7 @@ import { ProductSortSelector } from '../product-sort-selector/ProductSortSelecto
 
 export function ProductHeader() {
     return (
-        <Card>
+        <Card className={styles.productHeader}>
             <CardContent className={styles.productHeaderContent}>
                 <div>
                     <div className={styles.title}>

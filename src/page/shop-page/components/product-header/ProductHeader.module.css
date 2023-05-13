@@ -1,3 +1,6 @@
+.productHeader {
+    width: 100%;
+}
 
 .productHeaderContent {
     display: flex;
