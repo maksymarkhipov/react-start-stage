@@ -1,4 +1,4 @@
-import { MenuItem, Select, SelectChangeEvent } from '@mui/material';
+import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { changeProductSorter } from '../../features/shop-page/ShopPageSlice';
@@ -9,6 +9,8 @@ export function ProductSortSelector() {
     const [productParameter, setProductParameter] = useState('');
     const dispatch = useDispatch();
 
+    const label = 'Default sorting';
+
     const handleChange = (event: SelectChangeEvent) => {
         const optionSelector = event.target.value;
         setProductParameter(optionSelector);
@@ -17,17 +19,18 @@ export function ProductSortSelector() {
 
     return (
         <>
-            <Select
-                displayEmpty
-                inputProps={{ 'aria-label': 'Without label' }}
-                value={productParameter}
-                onChange={handleChange}
-            >
-                <MenuItem value={ProductParameter.DEFAULT_SORTING}>{ProductParameter.DEFAULT_SORTING}</MenuItem>
-                <MenuItem value={ProductParameter.TITLE}>{ProductParameter.TITLE}</MenuItem>
-                <MenuItem value={ProductParameter.PRICE}>{ProductParameter.PRICE}</MenuItem>
-                <MenuItem value={ProductParameter.CATEGORY}>{ProductParameter.CATEGORY}</MenuItem>
-            </Select>
+            <FormControl>
+                <InputLabel>{label}</InputLabel>
+                <Select
+                    value={productParameter}
+                    label={label}
+                    onChange={handleChange}
+                >
+                    <MenuItem value={ProductParameter.TITLE}>{ProductParameter.TITLE}</MenuItem>
+                    <MenuItem value={ProductParameter.PRICE}>{ProductParameter.PRICE}</MenuItem>
+                    <MenuItem value={ProductParameter.CATEGORY}>{ProductParameter.CATEGORY}</MenuItem>
+                </Select>
+            </FormControl>
         </>
     )
 }
