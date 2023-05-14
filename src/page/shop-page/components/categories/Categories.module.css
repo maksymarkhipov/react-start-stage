@@ -1,0 +1,30 @@
+
+.cardContent {
+    display: flex;
+    min-width: 270px;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+
+    color: #1D232C;
+    background-color: #EEF0F4;
+}
+
+.title {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.categories {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.categoryItem {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    text-transform: capitalize;
+}
