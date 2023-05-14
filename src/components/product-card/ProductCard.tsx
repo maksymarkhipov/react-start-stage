@@ -2,7 +2,7 @@ import { Card, CardContent, IconButton } from '@mui/material';
 import { ShoppingBag } from '@mui/icons-material';
 
 import styles from './ProductCard.module.css';
-import { Product } from '../../../../types/product';
+import { Product } from '../../types/product';
 
 
 export function ProductCard({data}: {data: Product}) {

@@ -9,13 +9,13 @@ import { List, Widgets } from '@mui/icons-material';
 import styles from './ProductHeader.module.css';
 import { ProductSortSelector } from '../product-sort-selector/ProductSortSelector';
 
-export function ProductHeader() {
+export function ProductHeader({title}: {title: string}) {
     return (
         <Card className={styles.productHeader}>
             <CardContent className={styles.productHeaderContent}>
                 <div>
                     <div className={styles.title}>
-                        Shop
+                        {title}
                     </div>
                 </div>
                 <div className={styles.delimiter}></div>

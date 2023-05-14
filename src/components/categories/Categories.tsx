@@ -1,8 +1,8 @@
 import { Card, CardContent } from '@mui/material';
 
 import styles from './Categories.module.css';
-import { useGetCategoriesQuery } from '../../../../api/apiSlice';
-import { Category } from '../../../../types/category';
+import { useGetCategoriesQuery } from '../../api/apiSlice';
+import { Category } from '../../types/category';
 import React, { ReactElement } from 'react';
 
 export function Categories() {

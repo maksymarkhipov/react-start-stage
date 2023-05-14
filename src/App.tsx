@@ -1,10 +1,10 @@
 import React from 'react';
-import { ShopPage } from './page/shop-page/ShopPage';
+import { Home } from './page/home/Home';
 
 function App() {
   return (
     <>
-      <ShopPage />
+      <Home />
     </>
   );
 }
