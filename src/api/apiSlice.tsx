@@ -9,24 +9,27 @@ export const apiSlice = createApi({
     endpoints: (build) => ({
         getProducts: build.query<Product[], void>({
             query: () => 'products/',
-            transformResponse: (response: ResponseProductDto[]) => {
-                const products: Product[] = [];
-
-                response.forEach((responseProduct) => {
-                    const newProduct = FromProductDto(responseProduct);
-                    products.push(newProduct);
-                });
-
-                return products;
-            },
+            transformResponse: (response: ResponseProductDto[]) => productDtosToProducts(response),
         }),
         getCategories: build.query<Category[], void>({
             query: () => 'products/categories/',
         }),
         getProductsByCategory: build.query<Product[], string>({
            query: (category) => `/products/category/${category}`,
+            transformResponse: (response: ResponseProductDto[]) => productDtosToProducts(response),
         }),
     }),
 });
 
 export const { useGetProductsQuery, useGetCategoriesQuery, useGetProductsByCategoryQuery } = apiSlice;
+
+const productDtosToProducts = (productsDtos: ResponseProductDto[]): Product[] => {
+    const products: Product[] = [];
+
+    productsDtos.forEach((responseProduct: ResponseProductDto) => {
+        const newProduct = FromProductDto(responseProduct);
+        products.push(newProduct);
+    });
+
+    return products;
+}
