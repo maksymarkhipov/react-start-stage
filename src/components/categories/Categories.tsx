@@ -1,22 +1,20 @@
-import { Card, CardContent } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Card, CardContent } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 import styles from './Categories.module.css';
 import { useGetCategoriesQuery } from '../../api/apiSlice';
-import { Category } from '../../types/category';
+import { CategoryWithCount, Category } from '../../types/category';
 import React, { ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { getCategories } from '../../features/shop-page/ShopPageSlice';
+
 
 export function Categories() {
-    let categoryItem = <></>;
+    useGetCategoriesQuery();
 
-    const {
-        data: categories,
-        isSuccess,
-    } = useGetCategoriesQuery();
-
-    if (isSuccess) {
-        categoryItem = getLinkCategories(categories);
-    }
+    const categories: CategoryWithCount[] = useSelector(getCategories);
+    const categoryLink = getLinkCategories(categories);
 
     return (
         <Card>
@@ -25,43 +23,37 @@ export function Categories() {
                     Categories
                 </div>
                 <ul className={styles.categories}>
-                    {categoryItem}
+                    <Accordion expanded={true}>
+                        <AccordionSummary
+                            expandIcon={<ExpandMoreIcon />}
+                            aria-controls="panel1a-content"
+                            id="panel1a-header"
+                        >
+                            All
+                        </AccordionSummary>
+                        <AccordionDetails>
+                            {categoryLink}
+                        </AccordionDetails>
+                    </Accordion>
                 </ul>
             </CardContent>
         </Card>
     )
 }
 
-type PreparedLink = {
-    nameCategory: string,
-    path: string;
-}
-
-function getLinkCategories(categories: Category[]): ReactElement {
-    const preparedLinks: PreparedLink[] = [
-        {nameCategory: 'all', path: '/'},
-    ];
-
-    categories.forEach((category: Category) => {
-       preparedLinks.push({
-           nameCategory: category,
-           path: `/category/${category}`,
-       });
-    });
-
-    const links = preparedLinks.map((category: PreparedLink) => createLink(category.nameCategory, category.path));
-
+function getLinkCategories(categories: CategoryWithCount[]): ReactElement {
     return (
         <>
-            {links}
+            {categories.map((category: CategoryWithCount) =>
+                createLink(category.title, `/category/${category.title}`, category.countProduct))}
         </>
     );
 }
 
-function createLink(category: Category, link: string): ReactElement {
+function createLink(category: Category, link: string, count: number): ReactElement {
     return (
         <NavLink key={category} to={link}>
-            <li key={category} className={styles.categoryItem}>{category}</li>
+            <li key={category} className={styles.categoryItem}>{category} ({count})</li>
         </NavLink>
     );
 }
