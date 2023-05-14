@@ -23,7 +23,7 @@ export const apiSlice = createApi({
         getCategories: build.query<Category[], void>({
             query: () => 'products/categories/',
         }),
-        getProductsByCategory: build.query<Product, string>({
+        getProductsByCategory: build.query<Product[], string>({
            query: (category) => `/products/category/${category}`,
         }),
     }),

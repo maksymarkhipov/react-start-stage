@@ -4,6 +4,7 @@ import styles from './Categories.module.css';
 import { useGetCategoriesQuery } from '../../api/apiSlice';
 import { Category } from '../../types/category';
 import React, { ReactElement } from 'react';
+import { NavLink } from 'react-router-dom';
 
 export function Categories() {
     let categoryItem = <></>;
@@ -35,7 +36,10 @@ function getTitleCategories(categories: Category[]): ReactElement {
     return (
         <>
             {categories.map((category: Category) => {
-                return <li key={category} className={styles.categoryItem}>{category}</li>;
+                console.log(`category/${category}`);
+                return <NavLink key={category} to={`/category/${category}`}>
+                    <li key={category} className={styles.categoryItem}>{category}</li>
+                </NavLink>
             })}
         </>
     );
