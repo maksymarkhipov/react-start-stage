@@ -1,5 +1,5 @@
 import { Button, Card, CardContent } from '@mui/material';
-import { CompareArrows, Favorite, ShoppingBag } from '@mui/icons-material';
+import { CompareArrows, Favorite, Grade, ShoppingBag } from '@mui/icons-material';
 
 import styles from './ProductCard.module.css';
 import { Product } from '../../types/product';
@@ -21,6 +21,12 @@ export const ProductCard = ({product}: {product: Product}) => {
                       <div className={styles.title}>
                           {product.title}
                       </div>
+                  </div>
+                  <div className={styles.stars}>
+                      {Array(Math.round(product.rate)).fill(<Grade />)}
+                  </div>
+                  <div className={styles.description}>
+                      {product.description}
                   </div>
               </div>
               <div className={styles.right}>

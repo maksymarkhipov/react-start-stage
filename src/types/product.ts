@@ -6,14 +6,20 @@ export type ResponseProductDto = {
     description: string;
     category: string;
     image: string;
+    rating: {
+        rate: number;
+        count: number;
+    }
 };
 
 export type Product = {
     id: number;
     title: string;
+    description: string;
     price: number;
     category: string;
     image: string;
+    rate: number;
 };
 
 export enum TypeCard {
@@ -28,5 +34,7 @@ export function FromProductDto(response: ResponseProductDto): Product {
         price: response.price,
         category: response.category,
         image: response.image,
+        description: response.description,
+        rate: response.rating.rate,
     };
 }
