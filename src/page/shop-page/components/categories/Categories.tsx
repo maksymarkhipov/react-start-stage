@@ -14,7 +14,6 @@ export function Categories() {
     } = useGetCategoriesQuery();
 
     if (isSuccess) {
-        console.log(categories);
         categoryItem = getTitleCategories(categories);
     }
 
