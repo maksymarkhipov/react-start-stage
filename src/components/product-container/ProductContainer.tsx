@@ -1,8 +1,8 @@
-import { ProductCard } from '../product-card/ProductCard';
 import { Product } from '../../types/product';
+import { ProductCard } from '../product-card/ProductCard';
 
 export function ProductContainer({products}: {products: Product[]}) {
-    const content = products.map((item) => <ProductCard key={item.id} data={item} />);
+    const content = products.map((item) => <ProductCard key={item.id} product={item} />);
 
     return (
         <>

@@ -1,42 +1,45 @@
-import { Card, CardContent, IconButton } from '@mui/material';
-import { ShoppingBag } from '@mui/icons-material';
+import { Button, Card, CardContent } from '@mui/material';
+import { CompareArrows, Favorite, ShoppingBag } from '@mui/icons-material';
 
 import styles from './ProductCard.module.css';
 import { Product } from '../../types/product';
 
-
-export function ProductCard({data}: {data: Product}) {
-    return(
-      <Card className={styles.product}>
-          <CardContent className={styles.productContent}>
-              <div className={styles.top}>
+export const ProductCard = ({product}: {product: Product}) => {
+  return (
+      <Card className={styles.card}>
+          <CardContent className={styles.cardContent}>
+              <div className={styles.left}>
+                  <div className={styles.imageContainer}>
+                      <img className={styles.image} src={product.image} alt='product' />
+                  </div>
+              </div>
+              <div className={styles.center}>
                   <div className={styles.category}>
-                      {data.category}
+                      {product.category}
                   </div>
                   <div className={styles.titleContainer}>
                       <div className={styles.title}>
-                          {data.title}
+                          {product.title}
                       </div>
                   </div>
               </div>
-              <div>
-                  <div className={styles.imageContainer}>
-                      <img className={styles.image}
-                           src={data.image}
-                           alt="stuff" />
+              <div className={styles.right}>
+                  <div className={styles.actionButtons}>
+                      <Button variant="contained" endIcon={<CompareArrows />}>
+                          Compare
+                      </Button>
+                      <Button variant="contained" endIcon={<Favorite />}>
+                          Wishlist
+                      </Button>
                   </div>
-              </div>
-              <div className={styles.bottom}>
                   <div className={styles.price}>
-                      ${data.price}
+                      ${product.price}
                   </div>
-                  <div>
-                      <IconButton color="primary" aria-label="add to shopping cart">
-                          <ShoppingBag />
-                      </IconButton>
-                  </div>
+                  <Button variant="contained" endIcon={<ShoppingBag />}>
+                      Add to Cart
+                  </Button>
               </div>
           </CardContent>
       </Card>
-    );
-}
+  )
+};
