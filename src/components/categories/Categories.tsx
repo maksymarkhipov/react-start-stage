@@ -15,7 +15,7 @@ export function Categories() {
     } = useGetCategoriesQuery();
 
     if (isSuccess) {
-        categoryItem = getTitleCategories(categories);
+        categoryItem = getLinkCategories(categories);
     }
 
     return (
@@ -32,15 +32,36 @@ export function Categories() {
     )
 }
 
-function getTitleCategories(categories: Category[]): ReactElement {
+type PreparedLink = {
+    nameCategory: string,
+    path: string;
+}
+
+function getLinkCategories(categories: Category[]): ReactElement {
+    const preparedLinks: PreparedLink[] = [
+        {nameCategory: 'all', path: '/'},
+    ];
+
+    categories.forEach((category: Category) => {
+       preparedLinks.push({
+           nameCategory: category,
+           path: `/category/${category}`,
+       });
+    });
+
+    const links = preparedLinks.map((category: PreparedLink) => createLink(category.nameCategory, category.path));
+
     return (
         <>
-            {categories.map((category: Category) => {
-                console.log(`category/${category}`);
-                return <NavLink key={category} to={`/category/${category}`}>
-                    <li key={category} className={styles.categoryItem}>{category}</li>
-                </NavLink>
-            })}
+            {links}
         </>
+    );
+}
+
+function createLink(category: Category, link: string): ReactElement {
+    return (
+        <NavLink key={category} to={link}>
+            <li key={category} className={styles.categoryItem}>{category}</li>
+        </NavLink>
     );
 }
