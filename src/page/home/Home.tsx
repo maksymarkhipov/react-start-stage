@@ -8,8 +8,8 @@ import { RootState } from '../../features/store';
 import { SideBar } from '../../components/sidebar/SideBar';
 
 export function Home() {
+    useGetProductsQuery();
     const viewProducts = useSelector((state: RootState) => state.shopPage.products);
-    const getProductsQuery = useGetProductsQuery();
 
     return (
         <div className={styles.wrapper}>

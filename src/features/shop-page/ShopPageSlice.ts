@@ -1,26 +1,31 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ProductParameter } from './product-sort-parameter';
-import { Product } from '../../types/product';
+import { Product, TypeCard } from '../../types/product';
 import { apiSlice } from '../../api/apiSlice';
 import { CategoryWithCount, Category } from '../../types/category';
 import { RootState } from '../store';
 
 type initialType = {
-    paramSorter: ProductParameter,
     products: Product[],
     categories: Category[],
+    paramSorter: ProductParameter,
+    typeCardProduct: string,
 };
 
 const initialState: initialType = {
     paramSorter: ProductParameter.DEFAULT_SORTING,
     products: [],
     categories: [],
+    typeCardProduct: TypeCard.CELL,
 }
 
 export const shopPageSlice = createSlice({
     name: 'shopPageSlice',
     initialState,
     reducers: {
+        changeTypeCardProduct: (state, {payload}: PayloadAction<TypeCard>) => {
+            state.typeCardProduct = payload;
+        },
         changeProductSorter: (state, { payload }: PayloadAction<ProductParameter>) => {
             state.paramSorter = payload;
             state.products = state.products.sort(sortByProductParams[state.paramSorter]);
@@ -42,7 +47,7 @@ export const shopPageSlice = createSlice({
     },
 });
 
-export const { changeProductSorter } = shopPageSlice.actions;
+export const { changeProductSorter, changeTypeCardProduct } = shopPageSlice.actions;
 
 export const getCategories = (state: RootState): CategoryWithCount[] => {
     const categoriesWithCount: CategoryWithCount[] = [];
@@ -60,6 +65,9 @@ export const getCategories = (state: RootState): CategoryWithCount[] => {
 
     return categoriesWithCount;
 }
+
+export const getCountProduct = (state: RootState) => state.shopPage.products.length;
+export const getTypeCard = (state: RootState) => state.shopPage.typeCardProduct;
 
 const sortByProductParams = {
     [ProductParameter.DEFAULT_SORTING]: (): number => 0,

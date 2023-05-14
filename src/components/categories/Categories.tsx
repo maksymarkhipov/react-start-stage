@@ -7,12 +7,13 @@ import { CategoryWithCount, Category } from '../../types/category';
 import React, { ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getCategories } from '../../features/shop-page/ShopPageSlice';
+import { getCategories, getCountProduct } from '../../features/shop-page/ShopPageSlice';
 
 
 export function Categories() {
     useGetCategoriesQuery();
 
+    const countProducts = useSelector(getCountProduct);
     const categories: CategoryWithCount[] = useSelector(getCategories);
     const categoryLink = getLinkCategories(categories);
 
@@ -29,7 +30,7 @@ export function Categories() {
                             aria-controls="panel1a-content"
                             id="panel1a-header"
                         >
-                            All
+                            All ({countProducts})
                         </AccordionSummary>
                         <AccordionDetails>
                             {categoryLink}
