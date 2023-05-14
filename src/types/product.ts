@@ -18,6 +18,7 @@ export type Product = {
     price: number;
     category: string;
     image: string;
+    count: number;
 };
 
 export function FromProductDto(response: ResponseProductDto): Product {
@@ -27,5 +28,6 @@ export function FromProductDto(response: ResponseProductDto): Product {
         price: response.price,
         category: response.category,
         image: response.image,
+        count: response.rating.count,
     };
 }

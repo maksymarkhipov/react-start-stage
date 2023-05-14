@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ProductParameter } from './product-sort-parameter';
 import { Product } from '../../types/product';
+import { apiSlice } from '../../api/apiSlice';
 
 type initialType = {
     paramSorter: ProductParameter,
@@ -16,17 +17,24 @@ export const shopPageSlice = createSlice({
     name: 'shopPageSlice',
     initialState,
     reducers: {
-        initProducts: ((state, { payload }: PayloadAction<Product[]>) => {
-            state.products = payload;
-        }),
         changeProductSorter: (state, { payload }: PayloadAction<ProductParameter>) => {
             state.paramSorter = payload;
             state.products = state.products.sort(sortByProductParams[state.paramSorter]);
         },
-    }
+    },
+    extraReducers: (builder) => {
+        builder.addMatcher(
+            apiSlice.endpoints.getProducts.matchFulfilled,
+            (state, {payload}) => {
+                state.products = payload;
+            }
+        )
+    },
 });
 
-export const sortByProductParams = {
+export const { changeProductSorter } = shopPageSlice.actions;
+
+const sortByProductParams = {
     [ProductParameter.DEFAULT_SORTING]: (): number => 0,
     [ProductParameter.PRICE]: (firstProduct: Product, secondProduct: Product): number =>
         firstProduct.price - secondProduct.price,
@@ -35,6 +43,3 @@ export const sortByProductParams = {
     [ProductParameter.CATEGORY]: (firstProduct: Product, secondProduct: Product): number =>
         firstProduct.category.localeCompare(secondProduct.category),
 }
-
-export const { changeProductSorter, initProducts } = shopPageSlice.actions;
-

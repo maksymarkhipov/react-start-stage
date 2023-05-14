@@ -3,23 +3,13 @@ import { ProductHeader } from '../../components/product-header/ProductHeader';
 
 import styles from './Home.module.css'
 import { useGetProductsQuery } from '../../api/apiSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../features/store';
-import { initProducts } from '../../features/shop-page/ShopPageSlice';
-import { useEffect } from 'react';
 import { SideBar } from '../../components/sidebar/SideBar';
 
 export function Home() {
-    const dispatch = useDispatch();
-    const { data: products } = useGetProductsQuery();
-
     const viewProducts = useSelector((state: RootState) => state.shopPage.products);
-
-    useEffect(() => {
-       if (products) {
-           dispatch(initProducts(products));
-       }
-    }, [products]);
+    const getProductsQuery = useGetProductsQuery();
 
     return (
         <div className={styles.wrapper}>
