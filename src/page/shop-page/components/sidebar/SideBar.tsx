@@ -1,9 +1,9 @@
-import { ProductFilterGroup } from '../product-filter-group/ProductFilterGroup';
+import { Categories } from '../categories/Categories';
 
 export function SideBar() {
     return(
-        <>
-            <ProductFilterGroup title={"Category"} />
-        </>
-    )
+        <div>
+            <Categories />
+        </div>
+    );
 }
