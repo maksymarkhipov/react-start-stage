@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { BASE_API_URL } from '../util/constants';
 import { Product, ResponseProductDto, FromProductDto } from '../types/product';
+import { Category } from '../types/category';
 
 export const apiSlice = createApi({
     reducerPath: 'fakeStore',
@@ -19,7 +20,10 @@ export const apiSlice = createApi({
                 return products;
             },
         }),
+        getCategories: build.query<Category[], void>({
+            query: () => 'products/categories/',
+        }),
     }),
 });
 
-export const { useGetProductsQuery } = apiSlice;
+export const { useGetProductsQuery, useGetCategoriesQuery } = apiSlice;
