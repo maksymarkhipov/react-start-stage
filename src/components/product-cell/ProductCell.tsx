@@ -6,7 +6,7 @@ import { Product } from '../../types/product';
 import { NavLink } from 'react-router-dom';
 
 export const ProductCell = ({data}: { data: Product }) => {
-    const linkProduct = `/product/${data.id}`;
+    const linkProduct = `/products/${data.id}`;
 
     return (
         <Card className={styles.product}>

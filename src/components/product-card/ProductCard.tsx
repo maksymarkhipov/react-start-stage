@@ -7,7 +7,7 @@ import { StarContainer } from '../star-container/StarContainer';
 import { NavLink } from 'react-router-dom';
 
 export const ProductCard = ({product}: {product: Product}) => {
-    const linkProduct = `/product/${product.id}`;
+    const linkProduct = `/products/${product.id}`;
 
     return(
         <Card className={styles.card}>
