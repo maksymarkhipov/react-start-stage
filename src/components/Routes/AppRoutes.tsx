@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Home } from '../../page/home/Home';
 import { CategoryPage } from '../../page/category-page/CategoryPage';
-import { SingleProductPage } from '../../page/SingleProductPage/SingleProductPage';
+import { SingleProductPage } from '../../page/single-product-page/SingleProductPage';
 
 export const AppRoutes = () => {
   return (
