@@ -7,15 +7,17 @@ import { RootState } from '../store';
 import { TypeCard } from '../../enums/type-card';
 
 type initialType = {
-    products: Product[],
-    categories: Category[],
     paramSorter: ProductParameter,
+    products: Product[],
+    productsByCurrentCategory: Product[],
+    categories: Category[],
     typeCardProduct: TypeCard,
 };
 
 const initialState: initialType = {
     paramSorter: ProductParameter.DEFAULT_SORTING,
     products: [],
+    productsByCurrentCategory: [],
     categories: [],
     typeCardProduct: TypeCard.CELL,
 }
@@ -29,7 +31,7 @@ export const productSlice = createSlice({
         },
         changeProductSorter: (state, { payload }: PayloadAction<ProductParameter>) => {
             state.paramSorter = payload;
-            state.products = state.products.sort(sortByProductParams[state.paramSorter]);
+            state.productsByCurrentCategory = state.productsByCurrentCategory.sort(sortByProductParams[state.paramSorter]);
         },
     },
     extraReducers: (builder) => {
@@ -37,12 +39,19 @@ export const productSlice = createSlice({
             apiSlice.endpoints.getProducts.matchFulfilled,
             (state, {payload}) => {
                 state.products = payload;
+                state.productsByCurrentCategory = state.products;
             }
         );
         builder.addMatcher(
             apiSlice.endpoints.getCategories.matchFulfilled,
             (state, {payload}) => {
                 state.categories = payload;
+            }
+        );
+        builder.addMatcher(
+            apiSlice.endpoints.getProductsByCategory.matchFulfilled,
+            (state, {payload}) => {
+                state.productsByCurrentCategory = payload;
             }
         );
     },

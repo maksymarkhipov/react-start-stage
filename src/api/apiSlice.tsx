@@ -21,7 +21,7 @@ export const apiSlice = createApi({
     }),
 });
 
-export const { useGetProductsQuery, useGetCategoriesQuery } = apiSlice;
+export const { useGetProductsQuery, useGetCategoriesQuery, useGetProductsByCategoryQuery } = apiSlice;
 
 const productDtosToProducts = (productsDtos: ResponseProductDto[]): Product[] => {
     const products: Product[] = [];

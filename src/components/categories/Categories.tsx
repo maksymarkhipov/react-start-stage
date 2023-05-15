@@ -1,5 +1,4 @@
-import { Accordion, AccordionDetails, AccordionSummary, Card, CardContent } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Card, CardContent } from '@mui/material';
 
 import styles from './Categories.module.css';
 import { useGetCategoriesQuery } from '../../api/apiSlice';
@@ -15,7 +14,7 @@ export const Categories = () => {
 
     const countProducts = useSelector(getCountProduct);
     const categories: CategoryWithCount[] = useSelector(getCategories);
-    const categoryLink = getLinkCategories(categories);
+    const categoryLinks = getLinkCategories(categories);
 
     return (
         <Card>
@@ -24,17 +23,10 @@ export const Categories = () => {
                     Categories
                 </div>
                 <ul className={styles.categories}>
-                    <Accordion expanded={true}>
-                        <AccordionSummary
-                            expandIcon={<ExpandMoreIcon />}
-                            aria-controls="panel1a-content"
-                        >
-                            All ({countProducts})
-                        </AccordionSummary>
-                        <AccordionDetails>
-                            {categoryLink}
-                        </AccordionDetails>
-                    </Accordion>
+                    <NavLink to='/'>
+                        All ({countProducts})
+                    </NavLink>
+                    {categoryLinks}
                 </ul>
             </CardContent>
         </Card>

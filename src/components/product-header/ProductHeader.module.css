@@ -14,6 +14,7 @@
     font-size: 30px;
     line-height: 35px;
     color: var(--color-price);
+    text-transform: capitalize;
 }
 
 .delimiter {
