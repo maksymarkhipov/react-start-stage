@@ -4,12 +4,12 @@ import { ProductHeader } from '../../components/product-header/ProductHeader';
 import styles from './Home.module.css'
 import { useGetProductsQuery } from '../../api/apiSlice';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../features/store';
 import { SideBar } from '../../components/sidebar/SideBar';
+import { getProducts } from '../../features/product/ProductSelector';
 
 export const Home = () => {
     useGetProductsQuery(undefined, {refetchOnMountOrArgChange: true});
-    const products = useSelector((state: RootState) => state.shopPage.productsByCurrentCategory);
+    const products = useSelector(getProducts);
 
     return (
         <div className={styles.wrapper}>

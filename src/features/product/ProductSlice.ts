@@ -2,23 +2,24 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ProductParameter } from '../../enums/product-sort-parameter';
 import { Product } from '../../types/product';
 import { apiSlice } from '../../api/apiSlice';
-import { CategoryWithCount, Category } from '../../types/category';
-import { RootState } from '../store';
+import { Category } from '../../types/category';
 import { TypeCard } from '../../enums/type-card';
 
 type initialType = {
-    paramSorter: ProductParameter,
     products: Product[],
     productsByCurrentCategory: Product[],
+    sorterProductsByCurrentCategory: Product[],
     categories: Category[],
+    paramSorter: ProductParameter,
     typeCardProduct: TypeCard,
 };
 
 const initialState: initialType = {
-    paramSorter: ProductParameter.DEFAULT_SORTING,
     products: [],
     productsByCurrentCategory: [],
+    sorterProductsByCurrentCategory: [],
     categories: [],
+    paramSorter: ProductParameter.DEFAULT_SORTING,
     typeCardProduct: TypeCard.CELL,
 }
 
@@ -31,7 +32,12 @@ export const productSlice = createSlice({
         },
         changeProductSorter: (state, { payload }: PayloadAction<ProductParameter>) => {
             state.paramSorter = payload;
-            state.productsByCurrentCategory = state.productsByCurrentCategory.sort(sortByProductParams[state.paramSorter]);
+
+            if (state.paramSorter === ProductParameter.DEFAULT_SORTING) {
+                state.sorterProductsByCurrentCategory = state.productsByCurrentCategory;
+            } else {
+                state.sorterProductsByCurrentCategory = getSortedProducts(state.productsByCurrentCategory, state.paramSorter);
+            }
         },
     },
     extraReducers: (builder) => {
@@ -40,6 +46,7 @@ export const productSlice = createSlice({
             (state, {payload}) => {
                 state.products = payload;
                 state.productsByCurrentCategory = state.products;
+                state.sorterProductsByCurrentCategory = state.productsByCurrentCategory;
             }
         );
         builder.addMatcher(
@@ -52,6 +59,7 @@ export const productSlice = createSlice({
             apiSlice.endpoints.getProductsByCategory.matchFulfilled,
             (state, {payload}) => {
                 state.productsByCurrentCategory = payload;
+                state.sorterProductsByCurrentCategory = state.productsByCurrentCategory;
             }
         );
     },
@@ -59,23 +67,9 @@ export const productSlice = createSlice({
 
 export const { changeProductSorter, changeTypeCardProduct } = productSlice.actions;
 
-export const getCountProduct = (state: RootState): number => state.shopPage.products.length;
-export const getTypeCard = (state: RootState): TypeCard => state.shopPage.typeCardProduct;
-export const getCategories = (state: RootState): CategoryWithCount[] => {
-    const categoriesWithCount: CategoryWithCount[] = [];
-    const products = state.shopPage.products;
-    const categories = state.shopPage.categories;
-
-    categories.forEach((category: Category) => {
-        const countProducts = products.filter((product: Product) => product.category == category).length;
-
-        categoriesWithCount.push({
-            title: category,
-            countProducts,
-        });
-    });
-
-    return categoriesWithCount;
+function getSortedProducts(products: Product[], currentSort: ProductParameter): Product[] {
+    const copyProducts = products.slice();
+    return copyProducts.sort(sortByProductParams[currentSort]);
 }
 
 const sortByProductParams = {

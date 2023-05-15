@@ -4,13 +4,13 @@ import { ProductHeader } from '../../components/product-header/ProductHeader';
 import { ProductContainer } from '../../components/product-container/ProductContainer';
 import { useGetProductsByCategoryQuery } from '../../api/apiSlice';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../features/store';
 import { useParams } from 'react-router-dom';
+import { getProducts } from '../../features/product/ProductSelector';
 
 export const CategoryPage = () => {
     const params = useParams();
     useGetProductsByCategoryQuery(params.categoryTitle!, { refetchOnMountOrArgChange: true });
-    const products = useSelector((state: RootState) => state.shopPage.productsByCurrentCategory);
+    const products = useSelector(getProducts);
 
     return (
         <div className={styles.wrapper}>
