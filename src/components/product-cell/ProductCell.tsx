@@ -5,7 +5,7 @@ import styles from './ProductCell.module.css';
 import { Product } from '../../types/product';
 
 
-export function ProductCell({data}: {data: Product}) {
+export const ProductCell = ({data}: {data: Product}) => {
     return(
       <Card className={styles.product}>
           <CardContent className={styles.productContent}>

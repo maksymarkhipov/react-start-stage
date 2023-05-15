@@ -5,7 +5,7 @@ import { getTypeCard } from '../../features/product/ProductSlice';
 import { ProductCell } from '../product-cell/ProductCell';
 import { TypeCard } from '../../enums/type-card';
 
-export function ProductContainer({products}: {products: Product[]}) {
+export const ProductContainer = ({products}: {products: Product[]}) => {
     const typeCardProduct = useSelector(getTypeCard);
 
     const content = products.map((item: Product) => {

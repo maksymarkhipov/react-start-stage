@@ -5,7 +5,7 @@ import { changeProductSorter } from '../../features/product/ProductSlice';
 import { ProductParameter } from '../../enums/product-sort-parameter';
 
 
-export function ProductSortSelector() {
+export const ProductSortSelector = () => {
     const [productParameter, setProductParameter] = useState('');
     const dispatch = useDispatch();
 

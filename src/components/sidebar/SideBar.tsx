@@ -1,6 +1,6 @@
 import { Categories } from '../categories/Categories';
 
-export function SideBar() {
+export const SideBar = () => {
     return(
         <div>
             <Categories />

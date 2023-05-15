@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { changeTypeCardProduct } from '../../features/product/ProductSlice';
 import { TypeCard } from '../../enums/type-card';
 
-export function ProductHeader({title}: {title: string}) {
+export const ProductHeader = ({title}: {title: string}) => {
     const dispatch = useDispatch();
 
     return (

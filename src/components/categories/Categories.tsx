@@ -10,7 +10,7 @@ import { useSelector } from 'react-redux';
 import { getCategories, getCountProduct } from '../../features/product/ProductSlice';
 
 
-export function Categories() {
+export const Categories = () => {
     useGetCategoriesQuery();
 
     const countProducts = useSelector(getCountProduct);
@@ -28,7 +28,6 @@ export function Categories() {
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon />}
                             aria-controls="panel1a-content"
-                            id="panel1a-header"
                         >
                             All ({countProducts})
                         </AccordionSummary>
@@ -46,7 +45,7 @@ function getLinkCategories(categories: CategoryWithCount[]): ReactElement {
     return (
         <>
             {categories.map((category: CategoryWithCount) =>
-                createLink(category.title, `/category/${category.title}`, category.countProduct))}
+                createLink(category.title, `/category/${category.title}`, category.countProducts))}
         </>
     );
 }

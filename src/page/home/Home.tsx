@@ -7,9 +7,9 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../features/store';
 import { SideBar } from '../../components/sidebar/SideBar';
 
-export function Home() {
+export const Home = () => {
     useGetProductsQuery();
-    const viewProducts = useSelector((state: RootState) => state.shopPage.products);
+    const products = useSelector((state: RootState) => state.shopPage.products);
 
     return (
         <div className={styles.wrapper}>
@@ -17,9 +17,9 @@ export function Home() {
                 <SideBar />
             </div>
             <div className={styles.content}>
-                <ProductHeader title={'Shop'} />
+                <ProductHeader title='Shop' />
                 <div className={styles.productContainer}>
-                    {viewProducts ? (<ProductContainer products={viewProducts} />) : <></>}
+                    {products ? (<ProductContainer products={products} />) : <></>}
                 </div>
             </div>
         </div>

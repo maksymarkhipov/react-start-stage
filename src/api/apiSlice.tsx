@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { BASE_API_URL } from '../util/constants';
-import { Product, ResponseProductDto, FromProductDto } from '../types/product';
+import { Product, ResponseProductDto, fromProductDto } from '../types/product';
 import { Category } from '../types/category';
 
 export const apiSlice = createApi({
@@ -14,20 +14,20 @@ export const apiSlice = createApi({
         getCategories: build.query<Category[], void>({
             query: () => 'products/categories/',
         }),
-        getProductsByCategory: build.query<Product[], string>({
+        getProductsByCategory: build.query<Product[], Category>({
            query: (category) => `/products/category/${category}`,
             transformResponse: (response: ResponseProductDto[]) => productDtosToProducts(response),
         }),
     }),
 });
 
-export const { useGetProductsQuery, useGetCategoriesQuery, useGetProductsByCategoryQuery } = apiSlice;
+export const { useGetProductsQuery, useGetCategoriesQuery } = apiSlice;
 
 const productDtosToProducts = (productsDtos: ResponseProductDto[]): Product[] => {
     const products: Product[] = [];
 
     productsDtos.forEach((responseProduct: ResponseProductDto) => {
-        const newProduct = FromProductDto(responseProduct);
+        const newProduct = fromProductDto(responseProduct);
         products.push(newProduct);
     });
 

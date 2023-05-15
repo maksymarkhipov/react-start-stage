@@ -50,25 +50,24 @@ export const productSlice = createSlice({
 
 export const { changeProductSorter, changeTypeCardProduct } = productSlice.actions;
 
+export const getCountProduct = (state: RootState): number => state.shopPage.products.length;
+export const getTypeCard = (state: RootState): TypeCard => state.shopPage.typeCardProduct;
 export const getCategories = (state: RootState): CategoryWithCount[] => {
     const categoriesWithCount: CategoryWithCount[] = [];
     const products = state.shopPage.products;
     const categories = state.shopPage.categories;
 
     categories.forEach((category: Category) => {
-        const countProduct = products.filter((product: Product) => product.category == category).length;
+        const countProducts = products.filter((product: Product) => product.category == category).length;
 
         categoriesWithCount.push({
             title: category,
-            countProduct,
+            countProducts,
         });
     });
 
     return categoriesWithCount;
 }
-
-export const getCountProduct = (state: RootState) => state.shopPage.products.length;
-export const getTypeCard = (state: RootState) => state.shopPage.typeCardProduct;
 
 const sortByProductParams = {
     [ProductParameter.DEFAULT_SORTING]: (): number => 0,
