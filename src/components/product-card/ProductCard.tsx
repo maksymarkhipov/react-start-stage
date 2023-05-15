@@ -3,6 +3,7 @@ import { CompareArrows, Favorite, Grade, ShoppingBag } from '@mui/icons-material
 
 import styles from './ProductCard.module.css';
 import { Product } from '../../types/product';
+import { ReactElement } from 'react';
 
 export const ProductCard = ({product}: {product: Product}) => {
   return (
@@ -23,7 +24,7 @@ export const ProductCard = ({product}: {product: Product}) => {
                       </div>
                   </div>
                   <div className={styles.stars}>
-                      {Array(Math.round(product.rate)).fill(<Grade />)}
+                      {getStars(Math.round(product.rate))}
                   </div>
                   <div className={styles.description}>
                       {product.description}
@@ -49,3 +50,12 @@ export const ProductCard = ({product}: {product: Product}) => {
       </Card>
   )
 };
+
+function getStars(countStart: number): ReactElement {
+    const stars = Array(countStart).fill(<></>);
+    return (
+        <>
+            {stars.map((star, index) => <Grade key={index} />)}
+        </>
+    );
+}
