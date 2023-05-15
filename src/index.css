@@ -70,4 +70,8 @@ a {
   --color-name: #0077E4;
   --color-price: #1D232C;
   --color-grey: #EEF0F4;
+  --color-success: #CAFBEC;
+  --color-success-text: #0DA678;
+  --color-danger: #FFE5EC;
+  --color-danger-text: #FF316A;
 }

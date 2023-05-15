@@ -1,0 +1,111 @@
+
+.cardContent {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+.left {
+    width: 32%;
+}
+
+.imageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 467px;
+}
+
+.image {
+    max-width: 100%;
+    max-height: 467px;
+}
+
+.center {
+    width: 32%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.category {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+
+    color: var(--color-category);
+}
+
+.titleContainer {
+    padding: 20px 0;
+
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+
+    color: var(--color-name);
+}
+
+.description {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+
+    color: var(--color-category);
+}
+
+.right {
+    width: 32%;
+}
+
+.rightContent {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.labelText {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    color: var(--color-category);
+}
+
+.label {
+    padding: 3px 6px;
+
+    border-radius: 9px;
+    background-color: var(--color-success);
+    color: var(--color-success-text);
+}
+
+.labelStock {
+    background-color: var(--color-danger);
+    color: var(--color-danger-text);
+}
+
+.delimiter {
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-grey);
+}
+
+.actionButtons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.price {
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 42px;
+
+    color: var(--color-price);
+}
