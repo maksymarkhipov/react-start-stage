@@ -18,7 +18,7 @@ export const ProductContainer = ({products}: {products: Product[]}) => {
 
     return (
         <>
-            {content};
+            {content}
         </>
     );
 }
