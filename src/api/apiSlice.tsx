@@ -11,17 +11,26 @@ export const apiSlice = createApi({
             query: () => 'products/',
             transformResponse: (response: ResponseProductDto[]) => productDtosToProducts(response),
         }),
-        getCategories: build.query<Category[], void>({
-            query: () => 'products/categories/',
+        getProduct: build.query<Product, string>({
+            query: (id: string) => `products/${id}`,
+            transformResponse: (response: ResponseProductDto) => fromProductDto(response),
         }),
         getProductsByCategory: build.query<Product[], Category>({
-           query: (category) => `/products/category/${category}`,
+            query: (category) => `/products/category/${category}`,
             transformResponse: (response: ResponseProductDto[]) => productDtosToProducts(response),
+        }),
+        getCategories: build.query<Category[], void>({
+            query: () => 'products/categories/',
         }),
     }),
 });
 
-export const { useGetProductsQuery, useGetCategoriesQuery, useGetProductsByCategoryQuery } = apiSlice;
+export const {
+    useGetProductsQuery,
+    useGetProductQuery,
+    useGetProductsByCategoryQuery,
+    useGetCategoriesQuery,
+} = apiSlice;
 
 const productDtosToProducts = (productsDtos: ResponseProductDto[]): Product[] => {
     const products: Product[] = [];

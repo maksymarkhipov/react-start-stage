@@ -8,7 +8,7 @@ export const AppRoutes = () => {
       <Routes>
           <Route path='/' element={<Home />} />
           <Route path='category/:categoryTitle/' element={<CategoryPage />} />
-          <Route path='/product/:productId' element={<SingleProductPage />} />
+          <Route path='product/:productId/' element={<SingleProductPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
   );

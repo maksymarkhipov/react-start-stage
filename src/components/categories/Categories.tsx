@@ -1,7 +1,7 @@
 import { Card, CardContent } from '@mui/material';
 
 import styles from './Categories.module.css';
-import { useGetCategoriesQuery } from '../../api/apiSlice';
+import { useGetCategoriesQuery, useGetProductsQuery } from '../../api/apiSlice';
 import { CategoryWithCount, Category } from '../../types/category';
 import React, { ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
@@ -10,6 +10,7 @@ import { getCategories, getCountProduct } from '../../features/product/ProductSe
 
 
 export const Categories = () => {
+    useGetProductsQuery();
     useGetCategoriesQuery();
 
     const countProducts = useSelector(getCountProduct);
