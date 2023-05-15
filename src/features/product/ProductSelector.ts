@@ -1,9 +1,8 @@
-import { RootState } from '../store';
-import { Product } from '../../types/product';
-import { TypeCard } from '../../enums/type-card';
-import { Category, CategoryWithCount } from '../../types/category';
-import { ProductParameter } from '../../enums/product-sort-parameter';
-
+import { type RootState } from '../store';
+import { type Product } from '../../types/product';
+import { type TypeCard } from '../../enums/type-card';
+import { type Category, type CategoryWithCount } from '../../types/category';
+import { type ProductParameter } from '../../enums/product-sort-parameter';
 
 export const getProducts = (state: RootState): Product[] => state.shopPage.sorterProductsByCurrentCategory;
 export const getCountProduct = (state: RootState): number => state.shopPage.products.length;
@@ -16,7 +15,7 @@ export const getCategories = (state: RootState): CategoryWithCount[] => {
     const categories = state.shopPage.categories;
 
     categories.forEach((category: Category) => {
-        const countProducts = products.filter((product: Product) => product.category == category).length;
+        const countProducts = products.filter((product: Product) => product.category === category).length;
 
         categoriesWithCount.push({
             title: category,
@@ -25,4 +24,4 @@ export const getCategories = (state: RootState): CategoryWithCount[] => {
     });
 
     return categoriesWithCount;
-}
+};

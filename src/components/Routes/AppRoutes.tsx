@@ -4,12 +4,12 @@ import { CategoryPage } from '../../page/category-page/CategoryPage';
 import { SingleProductPage } from '../../page/single-product-page/SingleProductPage';
 
 export const AppRoutes = () => {
-  return (
-      <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='category/:categoryTitle/' element={<CategoryPage />} />
-          <Route path='products/:productId/' element={<SingleProductPage />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-  );
+    return (
+        <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='category/:categoryTitle/' element={<CategoryPage />} />
+            <Route path='products/:productId/' element={<SingleProductPage />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+    );
 };

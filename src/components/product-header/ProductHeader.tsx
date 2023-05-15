@@ -1,4 +1,4 @@
-import { Card, CardContent, FormControl, IconButton, } from '@mui/material';
+import { Card, CardContent, FormControl, IconButton } from '@mui/material';
 import { List, Widgets } from '@mui/icons-material';
 
 import styles from './ProductHeader.module.css';
@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { changeTypeCardProduct } from '../../features/product/ProductSlice';
 import { TypeCard } from '../../enums/type-card';
 
-export const ProductHeader = ({title}: {title: string}) => {
+export const ProductHeader = ({ title }: { title: string }) => {
     const dispatch = useDispatch();
 
     return (
@@ -37,4 +37,4 @@ export const ProductHeader = ({title}: {title: string}) => {
             </CardContent>
         </Card>
     );
-}
+};

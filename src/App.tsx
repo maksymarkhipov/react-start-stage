@@ -1,12 +1,12 @@
 import React from 'react';
 import { AppRoutes } from './components/Routes/AppRoutes';
 
-function App() {
-  return (
-    <>
-      <AppRoutes />
-    </>
-  );
+function App () {
+    return (
+        <>
+            <AppRoutes />
+        </>
+    );
 }
 
 export default App;

@@ -2,14 +2,14 @@ import { Button, Card, CardContent } from '@mui/material';
 import { CompareArrows, Favorite, ShoppingBag } from '@mui/icons-material';
 
 import styles from './ProductCard.module.css';
-import { Product } from '../../types/product';
+import { type Product } from '../../types/product';
 import { StarContainer } from '../star-container/StarContainer';
 import { NavLink } from 'react-router-dom';
 
-export const ProductCard = ({product}: {product: Product}) => {
+export const ProductCard = ({ product }: { product: Product }) => {
     const linkProduct = `/products/${product.id}`;
 
-    return(
+    return (
         <Card className={styles.card}>
             <CardContent className={styles.cardContent}>
                 <div className={styles.left}>
@@ -17,8 +17,8 @@ export const ProductCard = ({product}: {product: Product}) => {
                         <NavLink to={linkProduct}>
                             <img className={styles.image} src={product.image} alt='product' />
                         </NavLink>
-                  </div>
-              </div>
+                    </div>
+                </div>
                 <div className={styles.center}>
                     <div className={styles.category}>
                         {product.category}

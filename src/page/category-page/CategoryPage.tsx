@@ -20,9 +20,9 @@ export const CategoryPage = () => {
             <div className={styles.content}>
                 <ProductHeader title={params.categoryTitle!} />
                 <div className={styles.productContainer}>
-                    {products ? (<ProductContainer products={products} />) : <></>}
+                    {(products.length > 0) ? (<ProductContainer products={products} />) : <></>}
                 </div>
             </div>
         </div>
     );
-}
+};

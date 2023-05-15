@@ -1,22 +1,22 @@
 
 export type ResponseProductDto = {
-    id: number;
-    title: string;
-    price: number;
-    description: string;
-    category: string;
-    image: string;
+    id: number
+    title: string
+    price: number
+    description: string
+    category: string
+    image: string
     rating: {
-        rate: number;
-        count: number;
+        rate: number
+        count: number
     }
 };
 
 export type Product = Omit<ResponseProductDto, 'rating'> & {
-    rate: number;
-}
+    rate: number
+};
 
-export function fromProductDto(response: ResponseProductDto): Product {
+export function fromProductDto (response: ResponseProductDto): Product {
     return {
         id: response.id,
         title: response.title,

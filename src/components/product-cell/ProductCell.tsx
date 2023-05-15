@@ -2,10 +2,10 @@ import { Card, CardContent, IconButton } from '@mui/material';
 import { ShoppingBag } from '@mui/icons-material';
 
 import styles from './ProductCell.module.css';
-import { Product } from '../../types/product';
+import { type Product } from '../../types/product';
 import { NavLink } from 'react-router-dom';
 
-export const ProductCell = ({data}: { data: Product }) => {
+export const ProductCell = ({ data }: { data: Product }) => {
     const linkProduct = `/products/${data.id}`;
 
     return (
@@ -27,8 +27,8 @@ export const ProductCell = ({data}: { data: Product }) => {
                     <div className={styles.imageContainer}>
                         <NavLink to={linkProduct}>
                             <img className={styles.image}
-                                 src={data.image}
-                                 alt="stuff"/>
+                                src={data.image}
+                                alt="stuff"/>
                         </NavLink>
                     </div>
                 </div>
@@ -45,4 +45,4 @@ export const ProductCell = ({data}: { data: Product }) => {
             </CardContent>
         </Card>
     );
-}
+};

@@ -2,12 +2,11 @@ import { Card, CardContent } from '@mui/material';
 
 import styles from './Categories.module.css';
 import { useGetCategoriesQuery, useGetProductsQuery } from '../../api/apiSlice';
-import { CategoryWithCount, Category } from '../../types/category';
-import React, { ReactElement } from 'react';
+import { type CategoryWithCount, type Category } from '../../types/category';
+import React, { type ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { getCategories, getCountProduct } from '../../features/product/ProductSelector';
-
 
 export const Categories = () => {
     useGetProductsQuery();
@@ -31,10 +30,10 @@ export const Categories = () => {
                 </ul>
             </CardContent>
         </Card>
-    )
-}
+    );
+};
 
-function getLinkCategories(categories: CategoryWithCount[]): ReactElement {
+function getLinkCategories (categories: CategoryWithCount[]): ReactElement {
     return (
         <>
             {categories.map((category: CategoryWithCount) =>
@@ -43,7 +42,7 @@ function getLinkCategories(categories: CategoryWithCount[]): ReactElement {
     );
 }
 
-function createLink(category: Category, link: string, count: number): ReactElement {
+function createLink (category: Category, link: string, count: number): ReactElement {
     return (
         <NavLink key={category} to={link}>
             <li key={category} className={styles.categoryItem}>{category} ({count})</li>

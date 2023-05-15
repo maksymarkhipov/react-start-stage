@@ -2,6 +2,6 @@
 export type Category = string;
 
 export type CategoryWithCount = {
-    title: string;
-    countProducts: number;
-}
+    title: string
+    countProducts: number
+};

@@ -1,14 +1,14 @@
 import { ProductContainer } from '../../components/product-container/ProductContainer';
 import { ProductHeader } from '../../components/product-header/ProductHeader';
 
-import styles from './Home.module.css'
+import styles from './Home.module.css';
 import { useGetProductsQuery } from '../../api/apiSlice';
 import { useSelector } from 'react-redux';
 import { SideBar } from '../../components/sidebar/SideBar';
 import { getProducts } from '../../features/product/ProductSelector';
 
 export const Home = () => {
-    useGetProductsQuery(undefined, {refetchOnMountOrArgChange: true});
+    useGetProductsQuery(undefined, { refetchOnMountOrArgChange: true });
     const products = useSelector(getProducts);
 
     return (
@@ -19,9 +19,9 @@ export const Home = () => {
             <div className={styles.content}>
                 <ProductHeader title='Shop' />
                 <div className={styles.productContainer}>
-                    {products ? (<ProductContainer products={products} />) : <></>}
+                    {(products.length > 0) ? (<ProductContainer products={products} />) : <></>}
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};

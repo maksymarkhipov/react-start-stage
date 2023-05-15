@@ -1,10 +1,10 @@
-import { FormControl, MenuItem, Select, SelectChangeEvent } from '@mui/material';
+import { FormControl, MenuItem, Select, type SelectChangeEvent } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeProductSorter } from '../../features/product/ProductSlice';
 import { ProductParameter } from '../../enums/product-sort-parameter';
 import { getTypeSort } from '../../features/product/ProductSelector';
 
-import styles  from './ProductSortSelector.module.css';
+import styles from './ProductSortSelector.module.css';
 
 export const ProductSortSelector = () => {
     const productParameter = useSelector(getTypeSort);
@@ -39,5 +39,5 @@ export const ProductSortSelector = () => {
                 </Select>
             </FormControl>
         </>
-    )
-}
+    );
+};

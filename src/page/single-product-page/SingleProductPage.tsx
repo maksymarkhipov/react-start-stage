@@ -1,5 +1,5 @@
 
-import styles from '../home/Home.module.css'
+import styles from '../home/Home.module.css';
 import { useParams } from 'react-router-dom';
 import { useGetProductQuery } from '../../api/apiSlice';
 import { SingleProduct } from '../../components/single-product/SingleProduct';
@@ -10,8 +10,8 @@ export const SingleProductPage = () => {
 
     let content = <></>;
 
-    if (product) {
-         content = <SingleProduct product={product} />
+    if (product != null) {
+        content = <SingleProduct product={product} />;
     }
 
     return (
@@ -21,4 +21,4 @@ export const SingleProductPage = () => {
             </div>
         </div>
     );
-}
+};

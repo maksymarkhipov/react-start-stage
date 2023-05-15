@@ -1,4 +1,4 @@
 export enum TypeCard {
-    CELL= 'cell',
+    CELL = 'cell',
     CARD = 'card',
 }
