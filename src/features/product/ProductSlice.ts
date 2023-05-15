@@ -47,6 +47,7 @@ export const productSlice = createSlice({
                 state.products = payload;
                 state.productsByCurrentCategory = state.products;
                 state.sorterProductsByCurrentCategory = state.productsByCurrentCategory;
+                state.paramSorter = ProductParameter.DEFAULT_SORTING;
             }
         );
         builder.addMatcher(
@@ -60,6 +61,7 @@ export const productSlice = createSlice({
             (state, {payload}) => {
                 state.productsByCurrentCategory = payload;
                 state.sorterProductsByCurrentCategory = state.productsByCurrentCategory;
+                state.paramSorter = ProductParameter.DEFAULT_SORTING;
             }
         );
     },

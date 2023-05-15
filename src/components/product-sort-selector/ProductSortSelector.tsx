@@ -1,17 +1,17 @@
 import { FormControl, MenuItem, Select, SelectChangeEvent } from '@mui/material';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { changeProductSorter } from '../../features/product/ProductSlice';
 import { ProductParameter } from '../../enums/product-sort-parameter';
+import { getTypeSort } from '../../features/product/ProductSelector';
 
+import styles  from './ProductSortSelector.module.css';
 
 export const ProductSortSelector = () => {
-    const [productParameter, setProductParameter] = useState('');
+    const productParameter = useSelector(getTypeSort);
     const dispatch = useDispatch();
 
     const handleChange = (event: SelectChangeEvent) => {
         const optionSelector = event.target.value;
-        setProductParameter(optionSelector);
         dispatch(changeProductSorter(optionSelector as ProductParameter));
     };
 
@@ -24,10 +24,18 @@ export const ProductSortSelector = () => {
                     displayEmpty
                     inputProps={{ 'aria-label': 'Without label' }}
                 >
-                    <MenuItem value={ProductParameter.DEFAULT_SORTING}>{ProductParameter.DEFAULT_SORTING}</MenuItem>
-                    <MenuItem value={ProductParameter.TITLE}>{ProductParameter.TITLE}</MenuItem>
-                    <MenuItem value={ProductParameter.PRICE}>{ProductParameter.PRICE}</MenuItem>
-                    <MenuItem value={ProductParameter.CATEGORY}>{ProductParameter.CATEGORY}</MenuItem>
+                    <MenuItem className={styles.option} value={ProductParameter.DEFAULT_SORTING}>
+                        {ProductParameter.DEFAULT_SORTING}
+                    </MenuItem>
+                    <MenuItem className={styles.option} value={ProductParameter.TITLE}>
+                        {ProductParameter.TITLE}
+                    </MenuItem>
+                    <MenuItem className={styles.option} value={ProductParameter.PRICE}>
+                        {ProductParameter.PRICE}
+                    </MenuItem>
+                    <MenuItem className={styles.option} value={ProductParameter.CATEGORY}>
+                        {ProductParameter.CATEGORY}
+                    </MenuItem>
                 </Select>
             </FormControl>
         </>
