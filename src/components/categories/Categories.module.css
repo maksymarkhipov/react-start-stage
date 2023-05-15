@@ -6,8 +6,8 @@
     gap: 20px;
     padding: 20px;
 
-    color: #1D232C;
-    background-color: #EEF0F4;
+    color: var(--color-price);
+    background-color: var(--color-grey);
 }
 
 .title {

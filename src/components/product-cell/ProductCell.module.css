@@ -1,8 +1,3 @@
-:root {
-    --color-category: #586A84;
-    --color-name: #0077E4;
-    --color-price: #1D232C;
-}
 
 .product {
     display: flex;
