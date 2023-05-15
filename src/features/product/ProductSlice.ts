@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ProductParameter } from './product-sort-parameter';
-import { Product, TypeCard } from '../../types/product';
+import { ProductParameter } from '../../enums/product-sort-parameter';
+import { Product } from '../../types/product';
 import { apiSlice } from '../../api/apiSlice';
 import { CategoryWithCount, Category } from '../../types/category';
 import { RootState } from '../store';
+import { TypeCard } from '../../enums/type-card';
 
 type initialType = {
     products: Product[],

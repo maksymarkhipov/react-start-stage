@@ -2,7 +2,7 @@ import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@m
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { changeProductSorter } from '../../features/product/ProductSlice';
-import { ProductParameter } from '../../features/product/product-sort-parameter';
+import { ProductParameter } from '../../enums/product-sort-parameter';
 
 
 export function ProductSortSelector() {

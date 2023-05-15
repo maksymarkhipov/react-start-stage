@@ -5,7 +5,7 @@ import styles from './ProductHeader.module.css';
 import { ProductSortSelector } from '../product-sort-selector/ProductSortSelector';
 import { useDispatch } from 'react-redux';
 import { changeTypeCardProduct } from '../../features/product/ProductSlice';
-import { TypeCard } from '../../types/product';
+import { TypeCard } from '../../enums/type-card';
 
 export function ProductHeader({title}: {title: string}) {
     const dispatch = useDispatch();

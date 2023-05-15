@@ -22,11 +22,6 @@ export type Product = {
     rate: number;
 };
 
-export enum TypeCard {
-    CELL= 'cell',
-    CARD = 'card',
-}
-
 export function FromProductDto(response: ResponseProductDto): Product {
     return {
         id: response.id,

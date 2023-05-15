@@ -1,8 +1,9 @@
-import { Product, TypeCard } from '../../types/product';
+import { Product } from '../../types/product';
 import { ProductCard } from '../product-card/ProductCard';
 import { useSelector } from 'react-redux';
 import { getTypeCard } from '../../features/product/ProductSlice';
 import { ProductCell } from '../product-cell/ProductCell';
+import { TypeCard } from '../../enums/type-card';
 
 export function ProductContainer({products}: {products: Product[]}) {
     const typeCardProduct = useSelector(getTypeCard);
