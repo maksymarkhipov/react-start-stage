@@ -1,8 +1,8 @@
 import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { changeProductSorter } from '../../features/shop-page/ShopPageSlice';
-import { ProductParameter } from '../../features/shop-page/product-sort-parameter';
+import { changeProductSorter } from '../../features/product/ProductSlice';
+import { ProductParameter } from '../../features/product/product-sort-parameter';
 
 
 export function ProductSortSelector() {

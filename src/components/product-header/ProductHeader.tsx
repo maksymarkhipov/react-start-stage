@@ -4,7 +4,7 @@ import { List, Widgets } from '@mui/icons-material';
 import styles from './ProductHeader.module.css';
 import { ProductSortSelector } from '../product-sort-selector/ProductSortSelector';
 import { useDispatch } from 'react-redux';
-import { changeTypeCardProduct } from '../../features/shop-page/ShopPageSlice';
+import { changeTypeCardProduct } from '../../features/product/ProductSlice';
 import { TypeCard } from '../../types/product';
 
 export function ProductHeader({title}: {title: string}) {

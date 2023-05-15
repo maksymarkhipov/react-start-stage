@@ -3,6 +3,7 @@
     max-width: 1400px;
     gap: 20px;
     padding: 20px 20px;
+    margin: 0 auto;
 }
 
 .content {

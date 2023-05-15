@@ -9,7 +9,7 @@ type initialType = {
     products: Product[],
     categories: Category[],
     paramSorter: ProductParameter,
-    typeCardProduct: string,
+    typeCardProduct: TypeCard,
 };
 
 const initialState: initialType = {
@@ -19,7 +19,7 @@ const initialState: initialType = {
     typeCardProduct: TypeCard.CELL,
 }
 
-export const shopPageSlice = createSlice({
+export const productSlice = createSlice({
     name: 'shopPageSlice',
     initialState,
     reducers: {
@@ -47,7 +47,7 @@ export const shopPageSlice = createSlice({
     },
 });
 
-export const { changeProductSorter, changeTypeCardProduct } = shopPageSlice.actions;
+export const { changeProductSorter, changeTypeCardProduct } = productSlice.actions;
 
 export const getCategories = (state: RootState): CategoryWithCount[] => {
     const categoriesWithCount: CategoryWithCount[] = [];

@@ -7,7 +7,7 @@ import { CategoryWithCount, Category } from '../../types/category';
 import React, { ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getCategories, getCountProduct } from '../../features/shop-page/ShopPageSlice';
+import { getCategories, getCountProduct } from '../../features/product/ProductSlice';
 
 
 export function Categories() {

@@ -1,7 +1,7 @@
 import { Product, TypeCard } from '../../types/product';
 import { ProductCard } from '../product-card/ProductCard';
 import { useSelector } from 'react-redux';
-import { getTypeCard } from '../../features/shop-page/ShopPageSlice';
+import { getTypeCard } from '../../features/product/ProductSlice';
 import { ProductCell } from '../product-cell/ProductCell';
 
 export function ProductContainer({products}: {products: Product[]}) {
