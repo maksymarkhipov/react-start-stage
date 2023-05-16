@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { apiSlice } from '../api/apiSlice';
 import { productSlice } from './product/ProductSlice';
+import { wishlistSlice } from './wishlist/WishlistSlice';
 
 export const store = configureStore({
     reducer: {
         shopPage: productSlice.reducer,
+        wishlist: wishlistSlice.reducer,
         [apiSlice.reducerPath]: apiSlice.reducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(apiSlice.middleware),
