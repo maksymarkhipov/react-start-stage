@@ -1,9 +1,9 @@
-import { type FilterRange } from '../types/filter-range';
-import { type Product } from '../types/product';
-import { SortProductParameter } from '../enums/product-sort-parameter';
+import { type FilterRange } from '../features/product/types/filter-range';
+import { type Product } from '../features/product/types/product';
+import { SortOption } from '../features/product/enums/sort-option';
 
 function getCheckFilterRanges (filterRanges: FilterRange[]): FilterRange[] {
-    return filterRanges.filter((filterRange: FilterRange) => filterRange.isChecked);
+    return filterRanges.filter((filterRange: FilterRange) => filterRange.isActivate);
 }
 
 function getFilterProducts (products: Product[], filterRanges: FilterRange[]) {
@@ -21,29 +21,29 @@ function getFilterProducts (products: Product[], filterRanges: FilterRange[]) {
     });
 }
 
-function getSortedProducts (products: Product[], currentSort: SortProductParameter): Product[] {
+function getSortedProducts (products: Product[], currentSort: SortOption): Product[] {
     const copyProducts = products.slice();
     return copyProducts.sort(sortByProductParams[currentSort]);
 }
 
 const sortByProductParams = {
-    [SortProductParameter.DEFAULT_SORTING]: (): number => 0,
-    [SortProductParameter.PRICE]: (firstProduct: Product, secondProduct: Product): number =>
+    [SortOption.DEFAULT_SORTING]: (): number => 0,
+    [SortOption.PRICE]: (firstProduct: Product, secondProduct: Product): number =>
         firstProduct.price - secondProduct.price,
-    [SortProductParameter.TITLE]: (firstProduct: Product, secondProduct: Product): number =>
+    [SortOption.TITLE]: (firstProduct: Product, secondProduct: Product): number =>
         firstProduct.title.localeCompare(secondProduct.title),
-    [SortProductParameter.CATEGORY]: (firstProduct: Product, secondProduct: Product): number =>
+    [SortOption.CATEGORY]: (firstProduct: Product, secondProduct: Product): number =>
         firstProduct.category.localeCompare(secondProduct.category),
 };
 
-export function getFilterAndSorter (products: Product[], sorterParam: SortProductParameter, filterRanges: FilterRange[]) {
+export function getFilterAndSorter (products: Product[], sorterParam: SortOption, filterRanges: FilterRange[]) {
     const checkFilteredRanges = getCheckFilterRanges(filterRanges);
 
     const filteredProducts = checkFilteredRanges.length > 0
         ? getFilterProducts(products, checkFilteredRanges)
         : products;
 
-    return sorterParam === SortProductParameter.DEFAULT_SORTING
+    return sorterParam === SortOption.DEFAULT_SORTING
         ? filteredProducts
         : getSortedProducts(filteredProducts, sorterParam);
 }
