@@ -1,58 +1,54 @@
-import { createSlice, nanoid, type PayloadAction } from '@reduxjs/toolkit';
-import { ProductParameter } from '../../enums/product-sort-parameter';
+import { createSlice, type Draft, nanoid, type PayloadAction } from '@reduxjs/toolkit';
+import { SortProductParameter } from '../../enums/product-sort-parameter';
 import { type Product } from '../../types/product';
 import { apiSlice } from '../../api/apiSlice';
 import { type Category } from '../../types/category';
 import { TypeCard } from '../../enums/type-card';
 import { type FilterRange } from '../../types/filter-range';
+import { getFilterAndSorter } from '../../service/product-service';
 
 const filterMin = 0;
-const filterMax = 100;
+const filterMax = 120;
 const filterStep = 20;
 
-type initialType = {
+type InitialType = {
     products: Product[]
     productsByCurrentCategory: Product[]
-    sorterProductsByCurrentCategory: Product[]
+    handledProducts: Product[]
     categories: Category[]
-    paramSorter: ProductParameter
+    paramSorter: SortProductParameter
     typeCardProduct: TypeCard
     filterRanges: FilterRange[]
 };
 
-const initialState: initialType = {
+const initialState: InitialType = {
     products: [],
     productsByCurrentCategory: [],
-    sorterProductsByCurrentCategory: [],
+    handledProducts: [],
     categories: [],
-    paramSorter: ProductParameter.DEFAULT_SORTING,
+    paramSorter: SortProductParameter.DEFAULT_SORTING,
     typeCardProduct: TypeCard.CELL,
-    filterRanges: getFilterRanges(filterMin, filterMax, filterStep),
+    filterRanges: initFilterRanges(filterMin, filterMax, filterStep),
 };
 
 export const productSlice = createSlice({
     name: 'shopPageSlice',
     initialState,
     reducers: {
-        changeTypeCardProduct: (state, { payload }: PayloadAction<TypeCard>) => {
+        changeTypeCardProduct: (state: Draft<InitialType>, { payload }: PayloadAction<TypeCard>) => {
             state.typeCardProduct = payload;
         },
-        changeProductSorter: (state, { payload }: PayloadAction<ProductParameter>) => {
+        changeProductSorter: (state: Draft<InitialType>, { payload }: PayloadAction<SortProductParameter>) => {
             state.paramSorter = payload;
-
-            if (state.paramSorter === ProductParameter.DEFAULT_SORTING) {
-                state.sorterProductsByCurrentCategory = state.productsByCurrentCategory;
-                return;
-            }
-
-            state.sorterProductsByCurrentCategory = getSortedProducts(state.productsByCurrentCategory, state.paramSorter);
+            state.handledProducts = getFilterAndSorter(state.productsByCurrentCategory, state.paramSorter, state.filterRanges);
         },
-        changeFilterRange: (state, { payload }: PayloadAction<FilterRange>) => {
+        changeFilterRange: (state: Draft<InitialType>, { payload }: PayloadAction<FilterRange>) => {
             const find = state.filterRanges.find((filterRange) => filterRange.id === payload.id);
 
             if (find == null) return;
 
             find.isChecked = payload.isChecked;
+            state.handledProducts = getFilterAndSorter(state.productsByCurrentCategory, state.paramSorter, state.filterRanges);
         },
     },
     extraReducers: (builder) => {
@@ -61,8 +57,9 @@ export const productSlice = createSlice({
             (state, { payload }) => {
                 state.products = payload;
                 state.productsByCurrentCategory = state.products;
-                state.sorterProductsByCurrentCategory = state.productsByCurrentCategory;
-                state.paramSorter = ProductParameter.DEFAULT_SORTING;
+                state.handledProducts = state.productsByCurrentCategory;
+                state.paramSorter = SortProductParameter.DEFAULT_SORTING;
+                state.filterRanges = initFilterRanges(filterMin, filterMax, filterStep);
             },
         );
         builder.addMatcher(
@@ -75,8 +72,9 @@ export const productSlice = createSlice({
             apiSlice.endpoints.getProductsByCategory.matchFulfilled,
             (state, { payload }) => {
                 state.productsByCurrentCategory = payload;
-                state.sorterProductsByCurrentCategory = state.productsByCurrentCategory;
-                state.paramSorter = ProductParameter.DEFAULT_SORTING;
+                state.handledProducts = state.productsByCurrentCategory;
+                state.paramSorter = SortProductParameter.DEFAULT_SORTING;
+                state.filterRanges = initFilterRanges(filterMin, filterMax, filterStep);
             },
         );
     },
@@ -84,7 +82,7 @@ export const productSlice = createSlice({
 
 export const { changeProductSorter, changeTypeCardProduct, changeFilterRange } = productSlice.actions;
 
-function getFilterRanges (min: number, max: number, step: number): FilterRange[] {
+function initFilterRanges (min: number, max: number, step: number): FilterRange[] {
     const filterRanges: FilterRange[] = [];
 
     for (let i = min; i < max; i += step) {
@@ -100,18 +98,3 @@ function getFilterRanges (min: number, max: number, step: number): FilterRange[]
 
     return filterRanges;
 }
-
-function getSortedProducts (products: Product[], currentSort: ProductParameter): Product[] {
-    const copyProducts = products.slice();
-    return copyProducts.sort(sortByProductParams[currentSort]);
-}
-
-const sortByProductParams = {
-    [ProductParameter.DEFAULT_SORTING]: (): number => 0,
-    [ProductParameter.PRICE]: (firstProduct: Product, secondProduct: Product): number =>
-        firstProduct.price - secondProduct.price,
-    [ProductParameter.TITLE]: (firstProduct: Product, secondProduct: Product): number =>
-        firstProduct.title.localeCompare(secondProduct.title),
-    [ProductParameter.CATEGORY]: (firstProduct: Product, secondProduct: Product): number =>
-        firstProduct.category.localeCompare(secondProduct.category),
-};
