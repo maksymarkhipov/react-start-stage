@@ -32,7 +32,6 @@
         "@typescript-eslint/triple-slash-reference": "off",
         "@typescript-eslint/no-invalid-void-type": "off",
         "@typescript-eslint/no-floating-promises": "off",
-        "@typescript-eslint/no-non-null-assertion": "off",
         "quotes": ["error", "single"]
     }
 }

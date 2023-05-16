@@ -9,7 +9,9 @@ import { getProducts } from '../../features/product/ProductSelector';
 
 export const CategoryPage = () => {
     const params = useParams();
-    useGetProductsByCategoryQuery(params.categoryTitle!, { refetchOnMountOrArgChange: true });
+    const categoryTitle = params.categoryTitle ?? '';
+
+    useGetProductsByCategoryQuery(categoryTitle, { refetchOnMountOrArgChange: true });
     const products = useSelector(getProducts);
 
     return (
@@ -18,7 +20,7 @@ export const CategoryPage = () => {
                 <SideBar />
             </div>
             <div className={styles.content}>
-                <ProductHeader title={params.categoryTitle!} />
+                <ProductHeader title={categoryTitle} />
                 <div className={styles.productContainer}>
                     {(products.length > 0) ? (<ProductContainer products={products} />) : <></>}
                 </div>

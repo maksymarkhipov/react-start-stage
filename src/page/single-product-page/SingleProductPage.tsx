@@ -6,7 +6,7 @@ import { SingleProduct } from '../../components/single-product/SingleProduct';
 
 export const SingleProductPage = () => {
     const params = useParams();
-    const { data: product } = useGetProductQuery(params.productId!);
+    const { data: product } = useGetProductQuery(params.productId ?? '');
 
     let content = <></>;
 
