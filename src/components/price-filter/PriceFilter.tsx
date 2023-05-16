@@ -1,15 +1,27 @@
 import { Card, CardContent } from '@mui/material';
 import styles from './PriceFilter.module.css';
-import { type FilterRange } from '../../types/range';
+import { type FilterRange } from '../../types/filter-range';
 import { PriceCheckbox } from '../price-checkbox/PriceCheckbox';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeFilterRange } from '../../features/product/ProductSlice';
+import { getFilterRanges } from '../../features/product/ProductSelector';
 
 export const PriceFilter = () => {
-    const min = 0;
-    const max = 100;
-    const step = 20;
+    const filterRanges = useSelector(getFilterRanges);
+    const dispatch = useDispatch();
 
-    const filterRanges: FilterRange[] = getFilterRanges(min, max, step);
-    const priceCheckboxes = filterRanges.map((range: FilterRange, index: number) => <PriceCheckbox key={index} range={range} />);
+    const handleChange = (checked: boolean, range: FilterRange) => {
+        const newRange: FilterRange = {
+            ...range,
+            isChecked: checked,
+        };
+
+        dispatch(changeFilterRange(newRange));
+    };
+
+    const priceCheckboxes = filterRanges.map((range: FilterRange) => {
+        return <PriceCheckbox key={range.id} range={range} onChange={handleChange} />;
+    });
 
     return (
         <Card>
@@ -23,15 +35,4 @@ export const PriceFilter = () => {
             </CardContent>
         </Card>
     );
-};
-
-const getFilterRanges = (min: number, max: number, step: number): FilterRange[] => {
-    const filterRanges: FilterRange[] = [];
-
-    for (let i = min; i < max; i += step) {
-        const range: FilterRange = { min: i, max: i + step };
-        filterRanges.push(range);
-    }
-
-    return filterRanges;
 };

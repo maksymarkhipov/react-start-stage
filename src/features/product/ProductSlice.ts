@@ -1,9 +1,14 @@
-import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, nanoid, type PayloadAction } from '@reduxjs/toolkit';
 import { ProductParameter } from '../../enums/product-sort-parameter';
 import { type Product } from '../../types/product';
 import { apiSlice } from '../../api/apiSlice';
 import { type Category } from '../../types/category';
 import { TypeCard } from '../../enums/type-card';
+import { type FilterRange } from '../../types/filter-range';
+
+const filterMin = 0;
+const filterMax = 100;
+const filterStep = 20;
 
 type initialType = {
     products: Product[]
@@ -12,6 +17,7 @@ type initialType = {
     categories: Category[]
     paramSorter: ProductParameter
     typeCardProduct: TypeCard
+    filterRanges: FilterRange[]
 };
 
 const initialState: initialType = {
@@ -21,6 +27,7 @@ const initialState: initialType = {
     categories: [],
     paramSorter: ProductParameter.DEFAULT_SORTING,
     typeCardProduct: TypeCard.CELL,
+    filterRanges: getFilterRanges(filterMin, filterMax, filterStep),
 };
 
 export const productSlice = createSlice({
@@ -35,9 +42,17 @@ export const productSlice = createSlice({
 
             if (state.paramSorter === ProductParameter.DEFAULT_SORTING) {
                 state.sorterProductsByCurrentCategory = state.productsByCurrentCategory;
-            } else {
-                state.sorterProductsByCurrentCategory = getSortedProducts(state.productsByCurrentCategory, state.paramSorter);
+                return;
             }
+
+            state.sorterProductsByCurrentCategory = getSortedProducts(state.productsByCurrentCategory, state.paramSorter);
+        },
+        changeFilterRange: (state, { payload }: PayloadAction<FilterRange>) => {
+            const find = state.filterRanges.find((filterRange) => filterRange.id === payload.id);
+
+            if (find == null) return;
+
+            find.isChecked = payload.isChecked;
         },
     },
     extraReducers: (builder) => {
@@ -67,7 +82,24 @@ export const productSlice = createSlice({
     },
 });
 
-export const { changeProductSorter, changeTypeCardProduct } = productSlice.actions;
+export const { changeProductSorter, changeTypeCardProduct, changeFilterRange } = productSlice.actions;
+
+function getFilterRanges (min: number, max: number, step: number): FilterRange[] {
+    const filterRanges: FilterRange[] = [];
+
+    for (let i = min; i < max; i += step) {
+        const range: FilterRange = {
+            id: nanoid(),
+            min: i,
+            max: i + step,
+            isChecked: false,
+        };
+
+        filterRanges.push(range);
+    }
+
+    return filterRanges;
+}
 
 function getSortedProducts (products: Product[], currentSort: ProductParameter): Product[] {
     const copyProducts = products.slice();

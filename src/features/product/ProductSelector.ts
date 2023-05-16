@@ -3,11 +3,13 @@ import { type Product } from '../../types/product';
 import { type TypeCard } from '../../enums/type-card';
 import { type Category, type CategoryWithCount } from '../../types/category';
 import { type ProductParameter } from '../../enums/product-sort-parameter';
+import { type FilterRange } from '../../types/filter-range';
 
 export const getProducts = (state: RootState): Product[] => state.shopPage.sorterProductsByCurrentCategory;
 export const getCountProduct = (state: RootState): number => state.shopPage.products.length;
 export const getTypeCard = (state: RootState): TypeCard => state.shopPage.typeCardProduct;
 export const getTypeSort = (state: RootState): ProductParameter => state.shopPage.paramSorter;
+export const getFilterRanges = (state: RootState): FilterRange[] => state.shopPage.filterRanges;
 
 export const getCategories = (state: RootState): CategoryWithCount[] => {
     const categoriesWithCount: CategoryWithCount[] = [];
