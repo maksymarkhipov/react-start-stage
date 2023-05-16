@@ -5,13 +5,16 @@ import { CompareArrows, Favorite, Person, ShoppingBag } from '@mui/icons-materia
 import { IconButton } from '@mui/material';
 import { SearchSelector } from '../search-selector/SearchSelector';
 import MenuIcon from '@mui/icons-material/Menu';
+import { NavLink } from 'react-router-dom';
 
 export const Header = () => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.logoContainer}>
                 <MenuIcon />
-                <Logo />
+                <NavLink to='/'>
+                    <Logo />
+                </NavLink>
             </div>
             <div className={styles.searchContainer}>
                 <SearchSelector />
