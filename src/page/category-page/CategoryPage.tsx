@@ -6,6 +6,7 @@ import { useGetProductsByCategoryQuery } from '../../api/apiSlice';
 import { useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getProducts } from '../../features/product/ProductSelector';
+import { Header } from '../../components/header/Header';
 
 export const CategoryPage = () => {
     const params = useParams();
@@ -16,13 +17,18 @@ export const CategoryPage = () => {
 
     return (
         <div className={styles.wrapper}>
-            <div className={styles.sidebar}>
-                <SideBar />
+            <div className={styles.headerContainer}>
+                < Header />
             </div>
             <div className={styles.content}>
-                <ProductHeader title={categoryTitle} />
-                <div className={styles.productContainer}>
-                    {(products.length > 0) ? (<ProductContainer products={products} />) : <></>}
+                <div className={styles.sidebar}>
+                    <SideBar />
+                </div>
+                <div className={styles.main}>
+                    <ProductHeader title={categoryTitle} />
+                    <div className={styles.productContainer}>
+                        {(products.length > 0) ? (<ProductContainer products={products} />) : <></>}
+                    </div>
                 </div>
             </div>
         </div>

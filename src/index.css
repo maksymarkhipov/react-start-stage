@@ -66,6 +66,7 @@ a {
 }
 
 :root {
+  --color-search: #319DFF;
   --color-category: #586A84;
   --color-name: #0077E4;
   --color-price: #1D232C;
@@ -74,4 +75,6 @@ a {
   --color-success-text: #0DA678;
   --color-danger: #FFE5EC;
   --color-danger-text: #FF316A;
+  --color-search-placeholder: #7D8FA9;
+  --color-background-search-button: #319DFF;
 }

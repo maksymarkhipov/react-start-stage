@@ -1,0 +1,22 @@
+
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logoContainer {
+    width: 15%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+}
+
+.searchContainer {
+    width: 50%;
+}
+
+.buttonContainer {
+    width: 15%;
+}
