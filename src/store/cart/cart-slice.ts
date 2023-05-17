@@ -30,7 +30,19 @@ export const cartSlice = createSlice({
 
             localSave<CartProduct[]>(CART_KEY, state.products);
         },
+        removeProduct: (state: Draft<InitialType>, { payload }: PayloadAction<Product>) => {
+            const foundedIndex = state.products.findIndex((product) => product.product.id === payload.id);
+
+            if (foundedIndex === undefined) return;
+
+            const foundedProduct = state.products[foundedIndex];
+            foundedProduct.quantity--;
+
+            if (foundedProduct.quantity <= 0) {
+                state.products.splice(foundedIndex, 1);
+            }
+        },
     },
 });
 
-export const { addProduct } = cartSlice.actions;
+export const { addProduct, removeProduct } = cartSlice.actions;
