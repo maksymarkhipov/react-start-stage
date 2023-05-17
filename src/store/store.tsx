@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { apiSlice } from './api/apiSlice';
-import { productSlice } from './product/ProductSlice';
-import { wishlistSlice } from './wishlist/WishlistSlice';
+import { apiSlice } from './api/api-slice';
+import { productSlice } from './product/product-slice';
+import { wishlistSlice } from './wishlist/wishlist-slice';
 
 export const store = configureStore({
     reducer: {
