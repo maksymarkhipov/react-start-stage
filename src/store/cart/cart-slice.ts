@@ -41,6 +41,8 @@ export const cartSlice = createSlice({
             if (foundedProduct.quantity <= 0) {
                 state.products.splice(foundedIndex, 1);
             }
+
+            localSave<CartProduct[]>(CART_KEY, state.products);
         },
     },
 });
