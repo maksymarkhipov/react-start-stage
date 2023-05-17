@@ -1,13 +1,15 @@
 import { type CartProduct } from '../../product/types/cart-product';
 import { createSlice, type Draft, type PayloadAction } from '@reduxjs/toolkit';
 import { type Product } from '../../product/types/product';
+import { localLoad, localSave } from '../../service/local-storage-service';
+import { CART_KEY } from '../../util/constants';
 
 export type InitialType = {
     products: CartProduct[]
 };
 
 const initialState: InitialType = {
-    products: [],
+    products: localLoad(CART_KEY) ?? [],
 };
 
 export const cartSlice = createSlice({
@@ -18,16 +20,15 @@ export const cartSlice = createSlice({
             const foundedProduct = state.products.find((product) => product.product.id === payload.id);
 
             if (foundedProduct === undefined) {
-                const cartProduct: CartProduct = {
+                state.products.push({
                     product: payload,
-                    quantity: 0,
-                };
-
-                state.products.push(cartProduct);
-                return;
+                    quantity: 1,
+                });
+            } else {
+                foundedProduct.quantity += 1;
             }
 
-            foundedProduct.quantity += 1;
+            localSave<CartProduct[]>(CART_KEY, state.products);
         },
     },
 });
