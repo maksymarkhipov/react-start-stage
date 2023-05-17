@@ -5,7 +5,7 @@ import styles from './product-cell.module.css';
 import { type Product } from '../../types/product';
 import { NavLink } from 'react-router-dom';
 
-export const ProductCell = ({ data }: { data: Product }) => {
+export const ProductCell = ({ data, onClickBuy }: { data: Product, onClickBuy: (product: Product) => void }) => {
     const linkProduct = `/products/${data.id}`;
 
     return (
@@ -37,7 +37,7 @@ export const ProductCell = ({ data }: { data: Product }) => {
                         ${data.price}
                     </div>
                     <div>
-                        <IconButton color="primary" aria-label="add to shopping cart">
+                        <IconButton color="primary" aria-label="add to shopping cart" onClick={() => { onClickBuy(data); }}>
                             <ShoppingBag/>
                         </IconButton>
                     </div>
