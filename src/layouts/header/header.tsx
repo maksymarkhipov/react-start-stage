@@ -6,7 +6,7 @@ import { IconButton } from '@mui/material';
 import { SearchSelector } from '../../components/search-selector/search-selector';
 import MenuIcon from '@mui/icons-material/Menu';
 import { NavLink } from 'react-router-dom';
-import { Cart } from '../../buy/components/cart/cart';
+import { Cart } from '../../cart/components/cart/cart';
 
 export const Header = () => {
     return (

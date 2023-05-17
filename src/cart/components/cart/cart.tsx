@@ -1,18 +1,20 @@
 import { useState } from 'react';
-import { IconButton } from '@mui/material';
+import { Badge, IconButton } from '@mui/material';
 import { ShoppingBag } from '@mui/icons-material';
 import { CartDialog } from '../cart-dialog/cart-dialog';
 import { useSelector } from 'react-redux';
-import { getCartProducts } from '../../../store/cart/cart-selector';
+import { getCartCountProducts, getCartProducts } from '../../../store/cart/cart-selector';
 import { type CartProduct } from '../../../product/types/cart-product';
 import { ProductCard } from '../cart-product/product-card';
 
 export const Cart = () => {
+    const [isOpenDialog, setIsOpenDialog] = useState(false);
+
     const cartProducts = useSelector(getCartProducts);
+    const countProducts = useSelector(getCartCountProducts);
+
     const content = cartProducts.map((cartProduct: CartProduct) =>
         <ProductCard key={cartProduct.product.id} cartProduct={cartProduct} />);
-
-    const [isOpenDialog, setIsOpenDialog] = useState(false);
 
     const handleOpenCart = () => {
         setIsOpenDialog(true);
@@ -25,7 +27,9 @@ export const Cart = () => {
     return (
         <>
             <IconButton onClick={() => { handleOpenCart(); } }>
-                <ShoppingBag />
+                <Badge color='secondary' badgeContent={countProducts}>
+                    <ShoppingBag />
+                </Badge>
             </IconButton>
             <CartDialog isOpen={isOpenDialog} onClose={handleCloseCart} content={<>{content}</>} />
         </>
