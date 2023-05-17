@@ -6,7 +6,7 @@ import { type Product } from '../../types/product';
 import { RateStars } from '../rate-stars/rate-stars';
 import { NavLink } from 'react-router-dom';
 
-export const ProductCard = ({ product }: { product: Product }) => {
+export const ProductCard = ({ product, onClickBuy }: { product: Product, onClickBuy: (product: Product) => void }) => {
     const linkProduct = `/products/${product.id}`;
 
     return (
@@ -49,7 +49,7 @@ export const ProductCard = ({ product }: { product: Product }) => {
                     <div className={styles.price}>
                         ${product.price}
                     </div>
-                    <Button variant="contained" endIcon={<ShoppingBag />}>
+                    <Button variant="contained" onClick={() => { onClickBuy(product); }} endIcon={<ShoppingBag />}>
                         Add to Cart
                     </Button>
                 </div>

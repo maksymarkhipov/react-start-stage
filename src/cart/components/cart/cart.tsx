@@ -5,7 +5,7 @@ import { CartDialog } from '../cart-dialog/cart-dialog';
 import { useSelector } from 'react-redux';
 import { getCartCountProducts, getCartProducts } from '../../../store/cart/cart-selector';
 import { type CartProduct } from '../../../product/types/cart-product';
-import { ProductCard } from '../cart-product/product-card';
+import { ProductCard } from '../product-card/product-card';
 
 export const Cart = () => {
     const [isOpenDialog, setIsOpenDialog] = useState(false);
