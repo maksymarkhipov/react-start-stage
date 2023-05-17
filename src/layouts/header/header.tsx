@@ -4,15 +4,15 @@ import styles from './header.module.css';
 import { CompareArrows, Favorite, Person } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 import { SearchSelector } from '../../components/search-selector/search-selector';
-import MenuIcon from '@mui/icons-material/Menu';
 import { NavLink } from 'react-router-dom';
 import { Cart } from '../../cart/components/cart/cart';
+import { Menu } from '../menu/menu';
 
 export const Header = () => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.logoContainer}>
-                <MenuIcon />
+                <Menu />
                 <NavLink to='/'>
                     <Logo />
                 </NavLink>
