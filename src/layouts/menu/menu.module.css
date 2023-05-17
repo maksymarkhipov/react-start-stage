@@ -1,0 +1,18 @@
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 30px;
+
+    font-size: 18px;
+}
+
+.menuItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
