@@ -14,6 +14,7 @@ export const CartDialog = ({ isOpen, onClose, content }: { isOpen: boolean, onCl
             scroll='paper'
             PaperProps={{
                 sx: {
+                    minHeight: '75vh',
                     maxHeight: '75vh',
                 },
             }}

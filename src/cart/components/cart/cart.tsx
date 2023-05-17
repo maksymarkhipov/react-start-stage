@@ -13,8 +13,10 @@ export const Cart = () => {
     const cartProducts = useSelector(getCartProducts);
     const countProducts = useSelector(getCartCountProducts);
 
-    const content = cartProducts.map((cartProduct: CartProduct) =>
+    const productCards = cartProducts.map((cartProduct: CartProduct) =>
         <ProductCard key={cartProduct.product.id} cartProduct={cartProduct} />);
+
+    const content = productCards.length > 0 ? productCards : <div>You dont have products</div>;
 
     const handleOpenCart = () => {
         setIsOpenDialog(true);
