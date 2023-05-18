@@ -1,0 +1,29 @@
+
+.container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #1D232C;
+    gap: 20px;
+}
+
+.imageContainer {
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titleContainer {
+    width: 50%;
+    font-size: 18px;
+}
+
+.image {
+    max-width: 96px;
+    max-height: 96px;
+}
+
+.priceContainer {
+    font-size: 24px;
+}

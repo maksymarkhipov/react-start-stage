@@ -1,13 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { apiSlice } from './api/api-slice';
 import { productSlice } from './product/product-slice';
-import { wishlistSlice } from './wishlist/wishlist-slice';
 import { cartSlice } from './cart/cart-slice';
 
 export const store = configureStore({
     reducer: {
         shopPage: productSlice.reducer,
-        wishlist: wishlistSlice.reducer,
         cart: cartSlice.reducer,
         [apiSlice.reducerPath]: apiSlice.reducer,
     },
