@@ -49,7 +49,7 @@ export const CartDialog = ({ isOpen, onClose, onBuy, content, sum }: CartDialogP
                     {content}
                 </div>
             </DialogContent>
-            <DialogActions className={styles.bottom} style={{ justifyContent: `${justifyContentValue}` }}>
+            <DialogActions className={styles.bottom} style={{ justifyContent: justifyContentValue }}>
                 {sumLabel}
                 <div className={styles.buttons}>
                     <Button variant="contained" onClick={onClose}>Close</Button>
