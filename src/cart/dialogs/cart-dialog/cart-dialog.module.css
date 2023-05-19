@@ -26,8 +26,11 @@
 
 .bottom {
     display: flex !important;
-    justify-content: space-between !important;
     align-items: center !important;
+}
+
+.bottomEmptyCart {
+    justify-content: space-between;
 }
 
 .buttons {

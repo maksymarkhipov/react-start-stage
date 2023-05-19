@@ -14,7 +14,16 @@ type CartDialogProps = {
 
 export const CartDialog = ({ isOpen, onClose, onBuy, content, sum }: CartDialogProps) => {
     const isCartEmpty = sum <= 0;
-    const sumLabel = isCartEmpty ? <></> : <div className={styles.sum}>total sum: ${sum}</div>;
+
+    const sumLabel = !isCartEmpty
+        ? <div className={styles.sum}>total sum: ${sum}</div>
+        : <></>;
+
+    const justifyContentValue = isCartEmpty
+        ? 'flex-end'
+        : 'space-between';
+
+    console.log(justifyContentValue);
 
     return (
         <Dialog open={isOpen}
@@ -40,7 +49,7 @@ export const CartDialog = ({ isOpen, onClose, onBuy, content, sum }: CartDialogP
                     {content}
                 </div>
             </DialogContent>
-            <DialogActions className={styles.bottom}>
+            <DialogActions className={styles.bottom} style={{ justifyContent: `${justifyContentValue}` }}>
                 {sumLabel}
                 <div className={styles.buttons}>
                     <Button variant="contained" onClick={onClose}>Close</Button>
