@@ -17,7 +17,7 @@ export const OneCategoryProduct = () => {
         <>
             <ProductHeader title={categoryTitle} />
             <div className={styles.productContainer}>
-                {(products.length > 0) ? (<ProductContainer products={products} />) : <></>}
+                {products.length > 0 ? <ProductContainer products={products} /> : <></>}
             </div>
         </>
     );

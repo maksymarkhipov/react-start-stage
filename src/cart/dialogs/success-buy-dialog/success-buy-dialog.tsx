@@ -1,7 +1,12 @@
 import { Dialog, DialogTitle } from '@mui/material';
 import DialogContent from '@mui/material/DialogContent';
 
-export const SuccessBuyDialog = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }) => {
+type SuccessBuyDialogProps = {
+    isOpen: boolean
+    onClose: () => void
+};
+
+export const SuccessBuyDialog = ({ isOpen, onClose }: SuccessBuyDialogProps) => {
     return (
         <Dialog open={isOpen} onClose={() => { onClose(); }}>
             <DialogTitle>Success buy</DialogTitle>

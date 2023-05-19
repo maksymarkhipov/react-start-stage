@@ -5,7 +5,7 @@ import styles from './product-header.module.css';
 import { ProductSortSelector } from '../product-sort-selector/product-sort-selector';
 import { useDispatch } from 'react-redux';
 import { changeTypeCardProduct } from '../../../store/product/product-slice';
-import { TypeView } from '../../enums/type-view';
+import { TypeProductView } from '../../enums/type-product-view';
 
 export const ProductHeader = ({ title }: { title: string }) => {
     const dispatch = useDispatch();
@@ -21,10 +21,10 @@ export const ProductHeader = ({ title }: { title: string }) => {
                 <div className={styles.delimiter}></div>
                 <div className={styles.bottom}>
                     <div>
-                        <IconButton aria-label="delete" onClick={() => dispatch(changeTypeCardProduct(TypeView.CELL))}>
+                        <IconButton aria-label="delete" onClick={() => dispatch(changeTypeCardProduct(TypeProductView.CELL))}>
                             <Widgets />
                         </IconButton>
-                        <IconButton aria-label="delete" onClick={() => dispatch(changeTypeCardProduct(TypeView.CARD))}>
+                        <IconButton aria-label="delete" onClick={() => dispatch(changeTypeCardProduct(TypeProductView.CARD))}>
                             <List />
                         </IconButton>
                     </div>

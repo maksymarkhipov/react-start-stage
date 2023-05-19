@@ -3,7 +3,7 @@ import { SortOption } from '../../product/enums/sort-option';
 import { type Product } from '../../product/types/product';
 import { apiSlice } from '../api/api-slice';
 import { type Category } from '../../product/types/category';
-import { TypeView } from '../../product/enums/type-view';
+import { TypeProductView } from '../../product/enums/type-product-view';
 import { type FilterRange } from '../../product/types/filter-range';
 import { getFilterAndSorter } from '../../service/product-service';
 
@@ -16,8 +16,8 @@ type InitialType = {
     productsByCurrentCategory: Product[]
     handledProducts: Product[]
     categories: Category[]
-    paramSorter: SortOption
-    typeCardProduct: TypeView
+    sortingParam: SortOption
+    typeProductCard: TypeProductView
     filterRanges: FilterRange[]
 };
 
@@ -26,8 +26,8 @@ const initialState: InitialType = {
     productsByCurrentCategory: [],
     handledProducts: [],
     categories: [],
-    paramSorter: SortOption.DEFAULT_SORTING,
-    typeCardProduct: TypeView.CELL,
+    sortingParam: SortOption.DEFAULT_SORTING,
+    typeProductCard: TypeProductView.CELL,
     filterRanges: initFilterRanges(filterMin, filterMax, filterStep),
 };
 
@@ -35,12 +35,12 @@ export const productSlice = createSlice({
     name: 'shopPageSlice',
     initialState,
     reducers: {
-        changeTypeCardProduct: (state: Draft<InitialType>, { payload }: PayloadAction<TypeView>) => {
-            state.typeCardProduct = payload;
+        changeTypeCardProduct: (state: Draft<InitialType>, { payload }: PayloadAction<TypeProductView>) => {
+            state.typeProductCard = payload;
         },
         changeProductSorter: (state: Draft<InitialType>, { payload }: PayloadAction<SortOption>) => {
-            state.paramSorter = payload;
-            state.handledProducts = getFilterAndSorter(state.productsByCurrentCategory, state.paramSorter, state.filterRanges);
+            state.sortingParam = payload;
+            state.handledProducts = getFilterAndSorter(state.productsByCurrentCategory, state.sortingParam, state.filterRanges);
         },
         changeFilterRange: (state: Draft<InitialType>, { payload }: PayloadAction<FilterRange>) => {
             const find = state.filterRanges.find((filterRange) => filterRange.id === payload.id);
@@ -48,7 +48,7 @@ export const productSlice = createSlice({
             if (find == null) return;
 
             find.isActivate = payload.isActivate;
-            state.handledProducts = getFilterAndSorter(state.productsByCurrentCategory, state.paramSorter, state.filterRanges);
+            state.handledProducts = getFilterAndSorter(state.productsByCurrentCategory, state.sortingParam, state.filterRanges);
         },
     },
     extraReducers: (builder) => {
@@ -58,7 +58,7 @@ export const productSlice = createSlice({
                 state.products = payload;
                 state.productsByCurrentCategory = state.products;
                 state.handledProducts = state.productsByCurrentCategory;
-                state.paramSorter = SortOption.DEFAULT_SORTING;
+                state.sortingParam = SortOption.DEFAULT_SORTING;
                 state.filterRanges = initFilterRanges(filterMin, filterMax, filterStep);
             },
         );
@@ -73,7 +73,7 @@ export const productSlice = createSlice({
             (state, { payload }) => {
                 state.productsByCurrentCategory = payload;
                 state.handledProducts = state.productsByCurrentCategory;
-                state.paramSorter = SortOption.DEFAULT_SORTING;
+                state.sortingParam = SortOption.DEFAULT_SORTING;
                 state.filterRanges = initFilterRanges(filterMin, filterMax, filterStep);
             },
         );

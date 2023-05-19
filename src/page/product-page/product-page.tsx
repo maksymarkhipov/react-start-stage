@@ -7,7 +7,7 @@ export const ProductPage = ({ contentLayout }: { contentLayout: ReactElement }) 
     return (
         <div className={styles.wrapper}>
             <div className={styles.headerContainer}>
-                < Header />
+                <Header />
             </div>
             <div className={styles.content}>
                 <div className={styles.sidebar}>

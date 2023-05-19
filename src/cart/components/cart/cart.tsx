@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { Badge, IconButton } from '@mui/material';
 import { ShoppingBag } from '@mui/icons-material';
-import { CartDialog } from '../cart-dialog/cart-dialog';
+import { CartDialog } from '../../dialogs/cart-dialog/cart-dialog';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCartCountProducts, selectCartProducts, selectCartSum } from '../../../store/cart/cart-selector';
-import { type CartProduct } from '../../../product/types/cart-product';
+import { type ProductCart } from '../../../product/types/product-cart';
 import { ProductCard } from '../product-card/product-card';
 import { buyProduct } from '../../../store/cart/cart-slice';
-import { SuccessBuyDialog } from '../success-buy-dialog/success-buy-dialog';
+import { SuccessBuyDialog } from '../../dialogs/success-buy-dialog/success-buy-dialog';
 
 export const Cart = () => {
     const [isOpenDialog, setIsOpenDialog] = useState(false);
@@ -24,7 +24,7 @@ export const Cart = () => {
         setIsOpenBuyDialog(true);
     };
 
-    const productCards = cartProducts.map((cartProduct: CartProduct) =>
+    const productCards = cartProducts.map((cartProduct: ProductCart) =>
         <ProductCard key={cartProduct.product.id} cartProduct={cartProduct} />);
 
     const content = productCards.length > 0 ? productCards : <div>You dont have products</div>;

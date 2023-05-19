@@ -5,7 +5,7 @@ import { selectProductsBySubstring } from '../../store/product/product-selector'
 import { type RootState } from '../../store/store';
 import React, { useState } from 'react';
 import { type Product } from '../../product/types/product';
-import { ProductCard } from '../product-card/ProductCard';
+import { SearchProductCard } from '../search-product-card/search-product-card';
 
 export const SearchSelector = () => {
     const [searchValue, setSearchValue] = useState('');
@@ -30,7 +30,7 @@ export const SearchSelector = () => {
                 </div>
             </div>
             <div className={styles.foundedProducts}>
-                {searchResult.map((product: Product) => <ProductCard key={product.id} product={product} />)}
+                {searchResult.map((product: Product) => <SearchProductCard key={product.id} product={product} />)}
             </div>
         </div>
     );

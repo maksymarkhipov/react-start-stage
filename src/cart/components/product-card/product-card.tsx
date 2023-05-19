@@ -1,10 +1,10 @@
 import styles from './product-card.module.css';
-import { type CartProduct } from '../../../product/types/cart-product';
+import { type ProductCart } from '../../../product/types/product-cart';
 import { Counter } from '../counter/counter';
 import { useDispatch } from 'react-redux';
 import { addProduct, removeProduct } from '../../../store/cart/cart-slice';
 
-export const ProductCard = ({ cartProduct }: { cartProduct: CartProduct }) => {
+export const ProductCard = ({ cartProduct }: { cartProduct: ProductCart }) => {
     const dispatch = useDispatch();
 
     const handleAddClick = () => {

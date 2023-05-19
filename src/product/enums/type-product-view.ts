@@ -1,4 +1,4 @@
-export enum TypeView {
+export enum TypeProductView {
     CELL = 'cell',
     CARD = 'card',
 }

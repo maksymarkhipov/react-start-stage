@@ -2,7 +2,7 @@ import { type Product } from '../../types/product';
 import { ProductCard } from '../product-card/product-card';
 import { useDispatch, useSelector } from 'react-redux';
 import { ProductCell } from '../product-cell/product-cell';
-import { TypeView } from '../../enums/type-view';
+import { TypeProductView } from '../../enums/type-product-view';
 import { selectTypeCard } from '../../../store/product/product-selector';
 import { addProduct } from '../../../store/cart/cart-slice';
 
@@ -15,11 +15,9 @@ export const ProductContainer = ({ products }: { products: Product[] }) => {
     };
 
     const content = products.map((item: Product) => {
-        if (typeCardProduct === TypeView.CELL) {
-            return <ProductCell key={item.id} data={item} onClickBuy={handleBuyClick} />;
-        } else {
-            return <ProductCard key={item.id} product={item} onClickBuy={handleBuyClick} />;
-        }
+        return typeCardProduct === TypeProductView.CELL
+            ? <ProductCell key={item.id} product={item} onClickBuy={handleBuyClick} />
+            : <ProductCard key={item.id} product={item} onClickBuy={handleBuyClick} />;
     });
 
     return (

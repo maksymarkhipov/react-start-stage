@@ -1,9 +1,9 @@
 
-import styles from './ProductCard.module.css';
+import styles from './search-product-card.module.css';
 import { type Product } from '../../product/types/product';
 import { NavLink } from 'react-router-dom';
 
-export const ProductCard = ({ product }: { product: Product }) => {
+export const SearchProductCard = ({ product }: { product: Product }) => {
     return (
         <div className={styles.container}>
             <div className={styles.imageContainer}>

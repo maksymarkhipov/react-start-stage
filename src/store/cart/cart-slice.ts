@@ -1,11 +1,11 @@
-import { type CartProduct } from '../../product/types/cart-product';
+import { type ProductCart } from '../../product/types/product-cart';
 import { createSlice, type Draft, type PayloadAction } from '@reduxjs/toolkit';
 import { type Product } from '../../product/types/product';
 import { localLoad, localSave } from '../../service/local-storage-service';
 import { CART_KEY } from '../../util/constants';
 
 export type InitialType = {
-    products: CartProduct[]
+    products: ProductCart[]
 };
 
 const initialState: InitialType = {
@@ -28,7 +28,7 @@ export const cartSlice = createSlice({
                 foundedProduct.quantity += 1;
             }
 
-            localSave<CartProduct[]>(CART_KEY, state.products);
+            localSave<ProductCart[]>(CART_KEY, state.products);
         },
         removeProduct: (state: Draft<InitialType>, { payload }: PayloadAction<Product>) => {
             const foundedIndex = state.products.findIndex((product) => product.product.id === payload.id);
@@ -42,12 +42,12 @@ export const cartSlice = createSlice({
                 state.products.splice(foundedIndex, 1);
             }
 
-            localSave<CartProduct[]>(CART_KEY, state.products);
+            localSave<ProductCart[]>(CART_KEY, state.products);
         },
         buyProduct: (state: Draft<InitialType>, { payload }: PayloadAction<void>) => {
             state.products = [];
 
-            localSave<CartProduct[]>(CART_KEY, state.products);
+            localSave<ProductCart[]>(CART_KEY, state.products);
         },
     },
 });

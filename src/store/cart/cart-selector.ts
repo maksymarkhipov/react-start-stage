@@ -1,17 +1,17 @@
 import { type RootState } from '../store';
-import { type CartProduct } from '../../product/types/cart-product';
+import { type ProductCart } from '../../product/types/product-cart';
 
 export const selectCartProducts = (state: RootState) => state.cart.products;
 export const selectCartCountProducts = (state: RootState): number => {
     let sum = 0;
-    state.cart.products.forEach((product: CartProduct) => { sum += product.quantity; });
+    state.cart.products.forEach((product: ProductCart) => { sum += product.quantity; });
 
     return sum;
 };
 
 export const selectCartSum = (state: RootState): number => {
     let sum = 0;
-    state.cart.products.forEach((cartProduct: CartProduct) => {
+    state.cart.products.forEach((cartProduct: ProductCart) => {
         sum += cartProduct.product.price * cartProduct.quantity;
     });
 

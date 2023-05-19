@@ -4,7 +4,7 @@ export function localSave<T> (key: string, data: T): void {
 }
 
 export function localLoad<T> (key: string): T | null {
-    const obj = localStorage.getItem(key);
+    const data = localStorage.getItem(key);
 
-    return (obj != null) ? JSON.parse(obj) : obj;
+    return (data != null) ? JSON.parse(data) : data;
 }

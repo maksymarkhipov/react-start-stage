@@ -13,7 +13,7 @@ export const Home = () => {
         <>
             <ProductHeader title='Shop' />
             <div className={styles.productContainer}>
-                {(products.length > 0) ? (<ProductContainer products={products} />) : <></>}
+                {products.length > 0 ? <ProductContainer products={products} /> : <></>}
             </div>
         </>
     );

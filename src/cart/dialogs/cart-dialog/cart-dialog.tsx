@@ -4,9 +4,15 @@ import Button from '@mui/material/Button';
 import { type ReactElement } from 'react';
 import DialogContent from '@mui/material/DialogContent';
 
-export const CartDialog = (
-    { isOpen, onClose, onBuy, content, sum }: { isOpen: boolean, onClose: () => void, onBuy: () => void, content: ReactElement, sum: number },
-) => {
+type CartDialogProps = {
+    isOpen: boolean
+    content: ReactElement
+    sum: number
+    onClose: () => void
+    onBuy: () => void
+};
+
+export const CartDialog = ({ isOpen, onClose, onBuy, content, sum }: CartDialogProps) => {
     const isCartEmpty = sum <= 0;
     const sumLabel = isCartEmpty ? <></> : <div className={styles.sum}>total sum: ${sum}</div>;
 

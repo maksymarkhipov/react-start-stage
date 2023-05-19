@@ -1,7 +1,7 @@
 import { Card, CardContent } from '@mui/material';
 import styles from './price-filter.module.css';
 import { type FilterRange } from '../../types/filter-range';
-import { PriceCheckbox } from '../price-chekcbox/price-checkbox';
+import { PriceCheckbox } from '../price-checkbox/price-checkbox';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeFilterRange } from '../../../store/product/product-slice';
 import { selectFilterRanges } from '../../../store/product/product-selector';
