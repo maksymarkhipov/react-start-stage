@@ -4,7 +4,7 @@ import { Button, Card, CardContent } from '@mui/material';
 import { CompareArrows, Favorite, ShoppingBag } from '@mui/icons-material';
 import { RateStars } from '../rate-stars/rate-stars';
 
-export const SingleProduct = ({ product }: { product: Product }) => {
+export const SingleProduct = ({ product, onClickBuy }: { product: Product, onClickBuy: (product: Product) => void }) => {
     return (
         <Card>
             <CardContent className={styles.cardContent}>
@@ -59,7 +59,7 @@ export const SingleProduct = ({ product }: { product: Product }) => {
                         <div className={styles.price}>
                           ${product.price}
                         </div>
-                        <Button variant="contained" endIcon={<ShoppingBag />}>
+                        <Button variant="contained" onClick={() => { onClickBuy(product); }} endIcon={<ShoppingBag />}>
                           Add to Cart
                         </Button>
                     </CardContent>
