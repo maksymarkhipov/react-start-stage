@@ -44,7 +44,12 @@ export const cartSlice = createSlice({
 
             localSave<CartProduct[]>(CART_KEY, state.products);
         },
+        buyProduct: (state: Draft<InitialType>, { payload }: PayloadAction<void>) => {
+            state.products = [];
+
+            localSave<CartProduct[]>(CART_KEY, state.products);
+        },
     },
 });
 
-export const { addProduct, removeProduct } = cartSlice.actions;
+export const { addProduct, removeProduct, buyProduct } = cartSlice.actions;
