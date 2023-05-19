@@ -23,8 +23,6 @@ export const CartDialog = ({ isOpen, onClose, onBuy, content, sum }: CartDialogP
         ? 'flex-end'
         : 'space-between';
 
-    console.log(justifyContentValue);
-
     return (
         <Dialog open={isOpen}
             onClose={onClose}
