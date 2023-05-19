@@ -4,10 +4,10 @@ import { type FilterRange } from '../../types/filter-range';
 import { PriceCheckbox } from '../price-chekcbox/price-checkbox';
 import { useDispatch, useSelector } from 'react-redux';
 import { changeFilterRange } from '../../../store/product/product-slice';
-import { getFilterRanges } from '../../../store/product/product-selector';
+import { selectFilterRanges } from '../../../store/product/product-selector';
 
 export const PriceFilter = () => {
-    const filterRanges = useSelector(getFilterRanges);
+    const filterRanges = useSelector(selectFilterRanges);
     const dispatch = useDispatch();
 
     const handleChange = (checked: boolean, range: FilterRange) => {

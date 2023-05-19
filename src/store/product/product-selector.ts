@@ -6,13 +6,13 @@ import { type SortOption } from '../../product/enums/sort-option';
 import { type FilterRange } from '../../product/types/filter-range';
 import { createSelector } from '@reduxjs/toolkit';
 
-export const getProducts = (state: RootState): Product[] => state.shopPage.handledProducts;
-export const getCountProduct = (state: RootState): number => state.shopPage.products.length;
-export const getTypeCard = (state: RootState): TypeView => state.shopPage.typeCardProduct;
-export const getTypeSort = (state: RootState): SortOption => state.shopPage.paramSorter;
-export const getFilterRanges = (state: RootState): FilterRange[] => state.shopPage.filterRanges;
+export const selectProducts = (state: RootState): Product[] => state.shopPage.handledProducts;
+export const selectCountProduct = (state: RootState): number => state.shopPage.products.length;
+export const selectTypeCard = (state: RootState): TypeView => state.shopPage.typeCardProduct;
+export const selectTypeSort = (state: RootState): SortOption => state.shopPage.paramSorter;
+export const selectFilterRanges = (state: RootState): FilterRange[] => state.shopPage.filterRanges;
 
-export const getCategories = (state: RootState): CategoryWithCount[] => {
+export const selectCategories = (state: RootState): CategoryWithCount[] => {
     const categoriesWithCount: CategoryWithCount[] = [];
     const products = state.shopPage.products;
     const categories = state.shopPage.categories;
@@ -30,7 +30,7 @@ export const getCategories = (state: RootState): CategoryWithCount[] => {
 };
 
 export const selectProductsBySubstring = createSelector(
-    [getProducts, (state: RootState, searchValue: string) => searchValue],
+    [selectProducts, (state: RootState, searchValue: string) => searchValue],
     (products: Product[], searchValue: string) => {
         if (searchValue === '') return [];
         const lowerSearchValue = searchValue.toLowerCase();

@@ -26,7 +26,7 @@ export const SingleProductPage = () => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.headerContainer}>
-                < Header />
+                <Header />
             </div>
             <div className={styles.content}>
                 {content}

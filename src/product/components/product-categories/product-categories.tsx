@@ -6,14 +6,14 @@ import { type CategoryWithCount, type Category } from '../../types/category';
 import React, { type ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { getCategories, getCountProduct } from '../../../store/product/product-selector';
+import { selectCategories, selectCountProduct } from '../../../store/product/product-selector';
 
 export const ProductCategories = () => {
     useGetProductsQuery();
     useGetCategoriesQuery();
 
-    const countProducts = useSelector(getCountProduct);
-    const categories: CategoryWithCount[] = useSelector(getCategories);
+    const countProducts = useSelector(selectCountProduct);
+    const categories: CategoryWithCount[] = useSelector(selectCategories);
     const categoryLinks = getLinkCategories(categories);
 
     return (

@@ -2,12 +2,12 @@ import { FormControl, MenuItem, Select, type SelectChangeEvent } from '@mui/mate
 import { useDispatch, useSelector } from 'react-redux';
 import { changeProductSorter } from '../../../store/product/product-slice';
 import { SortOption } from '../../enums/sort-option';
-import { getTypeSort } from '../../../store/product/product-selector';
+import { selectTypeSort } from '../../../store/product/product-selector';
 
 import styles from './product-sort-selector.module.css';
 
 export const ProductSortSelector = () => {
-    const productParameter = useSelector(getTypeSort);
+    const productParameter = useSelector(selectTypeSort);
     const dispatch = useDispatch();
 
     const handleChange = (event: SelectChangeEvent) => {

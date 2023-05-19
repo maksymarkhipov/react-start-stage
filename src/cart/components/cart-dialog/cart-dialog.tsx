@@ -4,7 +4,11 @@ import Button from '@mui/material/Button';
 import { type ReactElement } from 'react';
 import DialogContent from '@mui/material/DialogContent';
 
-export const CartDialog = ({ isOpen, onClose, content }: { isOpen: boolean, onClose: () => void, content: ReactElement }) => {
+export const CartDialog = (
+    { isOpen, onClose, content, sum }: { isOpen: boolean, onClose: () => void, content: ReactElement, sum: number },
+) => {
+    const sumLabel = sum <= 0 ? <></> : <div className={styles.sum}>total sum: ${sum}</div>;
+
     return (
         <Dialog open={isOpen}
             onClose={onClose}
@@ -29,9 +33,12 @@ export const CartDialog = ({ isOpen, onClose, content }: { isOpen: boolean, onCl
                     {content}
                 </div>
             </DialogContent>
-            <DialogActions className={styles.buttons}>
-                <Button variant="contained" onClick={onClose}>Close</Button>
-                <Button variant="contained">Buy</Button>
+            <DialogActions className={styles.bottom}>
+                {sumLabel}
+                <div className={styles.buttons}>
+                    <Button variant="contained" onClick={onClose}>Close</Button>
+                    <Button variant="contained">Buy</Button>
+                </div>
             </DialogActions>
         </Dialog>
     );
