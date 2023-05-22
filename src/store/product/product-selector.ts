@@ -1,7 +1,7 @@
 import { type RootState } from '../store';
 import { type Product } from '../../core/types/product';
 import { type TypeProductView } from '../../product/enums/type-product-view';
-import { type Category, type CategoryWithCount } from '../../core/types/category';
+import { type CategoryWithCount } from '../../core/types/category';
 import { type SortOption } from '../../product/enums/sort-option';
 import { type FilterRange } from '../../product/types/filter-range';
 import { createSelector } from '@reduxjs/toolkit';

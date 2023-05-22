@@ -1,7 +1,7 @@
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 
 import styles from './header.module.css';
-import { CompareArrows, Favorite, Person } from '@mui/icons-material';
+import { Favorite, Person } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 import { SearchSelector } from '../../product/components/search-selector/search-selector';
 import { NavLink } from 'react-router-dom';
