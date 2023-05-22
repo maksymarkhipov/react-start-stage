@@ -12,7 +12,7 @@ import { NavLink } from 'react-router-dom';
 import styles from './compare-list.module.css';
 import { type Category } from '../../../core/types/category';
 import { removeByCategory } from '../../../store/compare-list/compare-list-slice';
-import { getLinkCompareItem } from '../../../core/service/route-service';
+import { getCompareItemLink } from '../../../core/service/route-service';
 
 export const CompareList = () => {
     const [isOpenDialog, setIsOpenDialog] = useState(false);
@@ -27,7 +27,7 @@ export const CompareList = () => {
     const getContent = () => {
         const links = categoriesWithCount.map((categoryWithCount, index) => {
             return <div className={styles.category} key={index}>
-                <NavLink to={getLinkCompareItem(categoryWithCount.title)}>
+                <NavLink to={getCompareItemLink(categoryWithCount.title)}>
                     {categoryWithCount.title} ({categoryWithCount.countProducts})
                 </NavLink>
                 <div>

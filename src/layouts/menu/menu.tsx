@@ -4,7 +4,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import styles from './menu.module.css';
 import { Security, ShoppingCart } from '@mui/icons-material';
 import { NavLink } from 'react-router-dom';
-import { getLinkPrivacyPolicy } from '../../core/service/route-service';
+import { getPrivacyPolicyLink } from '../../core/service/route-service';
 
 export const Menu = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -35,7 +35,7 @@ export const Menu = () => {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink to={getLinkPrivacyPolicy()} className={styles.menuItem}>
+                        <NavLink to={getPrivacyPolicyLink()} className={styles.menuItem}>
                             <Security />
                             Privacy Policy
                         </NavLink>

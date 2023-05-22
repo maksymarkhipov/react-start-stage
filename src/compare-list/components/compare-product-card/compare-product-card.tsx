@@ -3,6 +3,8 @@ import styles from './compare-product-card.module.css';
 import { Button, Card, CardContent, IconButton } from '@mui/material';
 import { ShoppingBag } from '@mui/icons-material';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { getProductLink } from '../../../core/service/route-service';
+import { NavLink } from 'react-router-dom';
 
 type CompareProductCardProps = {
     product: Product
@@ -11,18 +13,24 @@ type CompareProductCardProps = {
 };
 
 export const CompareProductCard = ({ product, onClickBuy, onClickDelete }: CompareProductCardProps) => {
+    const productLink = getProductLink(product.id);
+
     return (
         <Card className={styles.container}>
             <CardContent className={styles.content}>
                 <div className={styles.imageContainer}>
-                    <img className={styles.image} src={product.image} alt='product' />
+                    <NavLink to={productLink}>
+                        <img className={styles.image} src={product.image} alt='product' />
+                    </NavLink>
                 </div>
                 <div className={styles.contentContainer}>
                     <div className={styles.categoryContainer}>
                         {product.category}
                     </div>
                     <div className={styles.titleContainer}>
-                        {product.title}
+                        <NavLink to={productLink}>
+                            {product.title}
+                        </NavLink>
                     </div>
                     <div className={styles.descriptionContainer}>
                         {product.description}
@@ -44,7 +52,6 @@ export const CompareProductCard = ({ product, onClickBuy, onClickDelete }: Compa
                     </IconButton>
                 </div>
             </CardContent>
-
         </Card>
     );
 };

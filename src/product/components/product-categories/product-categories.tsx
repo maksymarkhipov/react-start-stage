@@ -7,7 +7,7 @@ import React, { type ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectCategories, selectCountProduct } from '../../../store/product/product-selector';
-import { getLinkCategory } from '../../../core/service/route-service';
+import { getCategoryLink } from '../../../core/service/route-service';
 
 export const ProductCategories = () => {
     useGetProductsQuery();
@@ -38,7 +38,7 @@ function getLinkCategories (categories: CategoryWithCount[]): ReactElement {
     return (
         <>
             {categories.map((category: CategoryWithCount) =>
-                createLink(category.title, getLinkCategory(category.title), category.countProducts))}
+                createLink(category.title, getCategoryLink(category.title), category.countProducts))}
         </>
     );
 }

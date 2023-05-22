@@ -5,7 +5,7 @@ import styles from './product-card.module.css';
 import { type Product } from '../../../core/types/product';
 import { RateStars } from '../rate-stars/rate-stars';
 import { NavLink } from 'react-router-dom';
-import { getLinkProduct } from '../../../core/service/route-service';
+import { getProductLink } from '../../../core/service/route-service';
 
 type ProductCardProps = {
     product: Product
@@ -14,7 +14,7 @@ type ProductCardProps = {
 };
 
 export const ProductCard = ({ product, onClickBuy, onClickWishlist }: ProductCardProps) => {
-    const linkProduct = getLinkProduct(product.id);
+    const linkProduct = getProductLink(product.id);
 
     return (
         <Card className={styles.card}>

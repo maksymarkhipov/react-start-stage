@@ -1,16 +1,16 @@
 
-export const getLinkProduct = (productId: string): string => {
+export const getProductLink = (productId: string): string => {
     return `/products/${productId}`;
 };
 
-export const getLinkCategory = (categoryTitle: string): string => {
+export const getCategoryLink = (categoryTitle: string): string => {
     return `/category/${categoryTitle}`;
 };
 
-export const getLinkCompareItem = (categoryTitle: string): string => {
+export const getCompareItemLink = (categoryTitle: string): string => {
     return `compare-list/${categoryTitle}`;
 };
 
-export const getLinkPrivacyPolicy = (): string => {
+export const getPrivacyPolicyLink = (): string => {
     return 'privacy-policy';
 };
