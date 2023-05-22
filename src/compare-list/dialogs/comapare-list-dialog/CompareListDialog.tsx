@@ -15,11 +15,11 @@ export const CompareListDialog = ({ isOpen, onClose, content }: CompareListDialo
             open={isOpen}
             onClose={onClose}
             fullWidth
-            maxWidth='md'
+            maxWidth='sm'
             scroll='paper'
             PaperProps={{
                 sx: {
-                    minHeight: '50vh',
+                    minHeight: '25vh',
                     maxHeight: '50vh',
                 },
             }}
