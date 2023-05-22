@@ -7,7 +7,7 @@ import { selectProductsByCategory } from '../../store/compare-list/compare-list-
 import { type Product } from '../../core/types/product';
 import { addProduct } from '../../store/cart/cart-slice';
 import { CompareProductCard } from '../../compare-list/components/compare-product-card/compare-product-card';
-import { deleteProduct } from '../../store/compare-list/compare-list-slice';
+import { removeProduct } from '../../store/compare-list/compare-list-slice';
 
 export const ComparePage = () => {
     const params = useParams();
@@ -20,7 +20,7 @@ export const ComparePage = () => {
     };
 
     const handleClickDelete = (product: Product) => {
-        dispatch(deleteProduct(product.id));
+        dispatch(removeProduct(product.id));
     };
 
     const compareProducts = products.map((product) => {

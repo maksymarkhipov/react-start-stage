@@ -12,7 +12,7 @@ export const ProductCard = ({ cartProduct }: { cartProduct: ProductCart }) => {
     };
 
     const handleRemoveClick = () => {
-        dispatch(removeProduct(cartProduct.product));
+        dispatch(removeProduct(cartProduct.product.id));
     };
 
     return (

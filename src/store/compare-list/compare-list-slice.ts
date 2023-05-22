@@ -24,15 +24,15 @@ export const compareList = createSlice({
             state.products.push(payload);
             localSave(COMPARE_KEY, state.products);
         },
-        deleteByCategory: (state: Draft<InitialType>, { payload }: PayloadAction<Category>) => {
+        removeByCategory: (state: Draft<InitialType>, { payload }: PayloadAction<Category>) => {
             state.products = state.products.filter((product) => product.category !== payload);
             localSave(COMPARE_KEY, state.products);
         },
-        deleteProduct: (state: Draft<InitialType>, { payload }: PayloadAction<string>) => {
+        removeProduct: (state: Draft<InitialType>, { payload }: PayloadAction<string>) => {
             state.products = state.products.filter((product) => product.id !== payload);
             localSave(COMPARE_KEY, state.products);
         },
     },
 });
 
-export const { addCompareList, deleteByCategory, deleteProduct } = compareList.actions;
+export const { addCompareList, removeByCategory, removeProduct } = compareList.actions;

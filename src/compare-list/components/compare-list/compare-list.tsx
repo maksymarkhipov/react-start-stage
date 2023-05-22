@@ -11,7 +11,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { NavLink } from 'react-router-dom';
 import styles from './compare-list.module.css';
 import { type Category } from '../../../core/types/category';
-import { deleteByCategory } from '../../../store/compare-list/compare-list-slice';
+import { removeByCategory } from '../../../store/compare-list/compare-list-slice';
 
 export const CompareList = () => {
     const [isOpenDialog, setIsOpenDialog] = useState(false);
@@ -20,7 +20,7 @@ export const CompareList = () => {
     const dispatch = useDispatch();
 
     const handleDeleteProductByCategory = (category: Category) => {
-        dispatch(deleteByCategory(category));
+        dispatch(removeByCategory(category));
     };
 
     const getContent = () => {
