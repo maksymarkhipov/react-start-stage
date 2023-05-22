@@ -5,7 +5,7 @@ import { type CategoryWithCount } from '../../core/types/category';
 import { type SortOption } from '../../product/enums/sort-option';
 import { type FilterRange } from '../../product/types/filter-range';
 import { createSelector } from '@reduxjs/toolkit';
-import { getCategoriesWithCount } from '../../core/service/category-with-count.service';
+import { getCategoriesWithCount } from '../../core/service/category-with-count-service';
 
 export const selectProducts = (state: RootState): Product[] => state.shopPage.handledProducts;
 export const selectCountProduct = (state: RootState): number => state.shopPage.products.length;

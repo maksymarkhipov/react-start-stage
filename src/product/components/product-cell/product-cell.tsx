@@ -4,9 +4,10 @@ import { ShoppingBag } from '@mui/icons-material';
 import styles from './product-cell.module.css';
 import { type Product } from '../../../core/types/product';
 import { NavLink } from 'react-router-dom';
+import { getLinkProduct } from '../../../core/service/route-service';
 
 export const ProductCell = ({ product, onClickBuy }: { product: Product, onClickBuy: (product: Product) => void }) => {
-    const linkProduct = `/products/${product.id}`;
+    const linkProduct = getLinkProduct(product.id);
 
     return (
         <Card className={styles.product}>

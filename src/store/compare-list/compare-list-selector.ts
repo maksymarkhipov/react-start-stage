@@ -1,6 +1,6 @@
 import { type RootState } from '../store';
 import { type Category, type CategoryWithCount } from '../../core/types/category';
-import { getCategoriesWithCount } from '../../core/service/category-with-count.service';
+import { getCategoriesWithCount } from '../../core/service/category-with-count-service';
 import { type Product } from '../../core/types/product';
 import { createSelector } from '@reduxjs/toolkit';
 
