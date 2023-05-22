@@ -7,6 +7,7 @@ import {
 } from '../../../store/compare-list/compare-list-selector';
 import { useState } from 'react';
 import { CompareListDialog } from '../../dialogs/comapare-list-dialog/CompareListDialog';
+import { NavLink } from 'react-router-dom';
 
 export const CompareList = () => {
     const [isOpenDialog, setIsOpenDialog] = useState(false);
@@ -14,7 +15,9 @@ export const CompareList = () => {
     const categoriesWithCount = useSelector(selectCategoriesWithCount);
 
     const content = categoriesWithCount.map((categoryWithCount, index) => {
-        return <div key={index}>{categoryWithCount.title} ({categoryWithCount.countProducts})</div>;
+        return <NavLink key={index} to={`compare-list/${categoryWithCount.title}`}>
+            <div>{categoryWithCount.title} ({categoryWithCount.countProducts})</div>
+        </NavLink>;
     });
 
     const handleOpenDialog = () => {

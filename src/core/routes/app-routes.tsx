@@ -4,6 +4,7 @@ import { SingleProductPage } from '../../page/single-product-page/single-product
 import { Home } from '../../layouts/home/home';
 import { OneCategoryProduct } from '../../layouts/one-category-product/one-category-product';
 import { PrivacyPolicyPage } from '../../page/privacy-policy-page/privacy-policy-page';
+import { ComparePage } from '../../page/compare-page/compare-page';
 
 export const AppRoutes = () => {
     return (
@@ -12,6 +13,7 @@ export const AppRoutes = () => {
             <Route path='category/:categoryTitle/' element={<ProductPage contentLayout={<OneCategoryProduct />} />} />
             <Route path='products/:productId/' element={<SingleProductPage />} />
             <Route path='privacy-policy' element={<PrivacyPolicyPage /> } />
+            <Route path={'compare-list/:categoryTitle'} element={<ComparePage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
     );
