@@ -7,6 +7,7 @@ import { Header } from '../../layouts/header/header';
 import { type Product } from '../../core/types/product';
 import { useDispatch } from 'react-redux';
 import { addProduct } from '../../store/cart/cart-slice';
+import { addCompareList } from '../../store/compare-list/compare-list-slice';
 
 export const SingleProductPage = () => {
     const params = useParams();
@@ -19,8 +20,12 @@ export const SingleProductPage = () => {
         dispatch(addProduct(product));
     };
 
+    const handleClickCompare = (product: Product) => {
+        dispatch(addCompareList(product));
+    };
+
     if (product != null) {
-        content = <SingleProduct onClickBuy={handleClickBuy} product={product} />;
+        content = <SingleProduct onClickBuy={handleClickBuy} product={product} onClickCompare={handleClickCompare} />;
     }
 
     return (
