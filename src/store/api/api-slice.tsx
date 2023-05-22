@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { BASE_API_URL } from '../../util/constants';
-import { type Product, type ResponseProductDto, fromProductDto } from '../../product/types/product';
-import { type Category } from '../../product/types/category';
+import { type Product, type ResponseProductDto, fromProductDto } from '../../core/types/product';
+import { type Category } from '../../core/types/category';
 
 export const apiSlice = createApi({
     reducerPath: 'fakeStore',

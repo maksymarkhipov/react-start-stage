@@ -7,6 +7,7 @@ import { SearchSelector } from '../../product/components/search-selector/search-
 import { NavLink } from 'react-router-dom';
 import { Cart } from '../../cart/components/cart/cart';
 import { Menu } from '../menu/menu';
+import { CompareList } from '../../compare-list/components/compare-list/compare-list';
 
 export const Header = () => {
     return (
@@ -24,9 +25,7 @@ export const Header = () => {
                 <IconButton>
                     <Person />
                 </IconButton>
-                <IconButton>
-                    <CompareArrows />
-                </IconButton>
+                <CompareList />
                 <IconButton>
                     <Favorite />
                 </IconButton>

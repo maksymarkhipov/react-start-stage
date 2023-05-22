@@ -2,7 +2,7 @@ import { Card, CardContent } from '@mui/material';
 
 import styles from './product-categories.module.css';
 import { useGetCategoriesQuery, useGetProductsQuery } from '../../../store/api/api-slice';
-import { type CategoryWithCount, type Category } from '../../types/category';
+import { type CategoryWithCount, type Category } from '../../../core/types/category';
 import React, { type ReactElement } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';

@@ -1,11 +1,11 @@
 import { createSlice, type Draft, nanoid, type PayloadAction } from '@reduxjs/toolkit';
 import { SortOption } from '../../product/enums/sort-option';
-import { type Product } from '../../product/types/product';
+import { type Product } from '../../core/types/product';
 import { apiSlice } from '../api/api-slice';
-import { type Category } from '../../product/types/category';
+import { type Category } from '../../core/types/category';
 import { TypeProductView } from '../../product/enums/type-product-view';
 import { type FilterRange } from '../../product/types/filter-range';
-import { getFilterAndSorter } from '../../service/product-service';
+import { getFilterAndSorter } from '../../core/service/product-filter-sorting-service';
 
 const filterMin = 0;
 const filterMax = 120;

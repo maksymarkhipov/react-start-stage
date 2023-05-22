@@ -4,7 +4,7 @@ import { ShoppingBag } from '@mui/icons-material';
 import { CartDialog } from '../../dialogs/cart-dialog/cart-dialog';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCartCountProducts, selectCartProducts, selectCartSum } from '../../../store/cart/cart-selector';
-import { type ProductCart } from '../../../product/types/product-cart';
+import { type ProductCart } from '../../types/product-cart';
 import { ProductCard } from '../product-card/product-card';
 import { buyProduct } from '../../../store/cart/cart-slice';
 import { SuccessBuyDialog } from '../../dialogs/success-buy-dialog/success-buy-dialog';

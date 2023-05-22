@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { selectProductsBySubstring } from '../../../store/product/product-selector';
 import { type RootState } from '../../../store/store';
 import React, { useState } from 'react';
-import { type Product } from '../../types/product';
+import { type Product } from '../../../core/types/product';
 import { SearchProductCard } from '../search-product-card/search-product-card';
 
 export const SearchSelector = () => {

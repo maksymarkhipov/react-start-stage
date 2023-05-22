@@ -2,11 +2,17 @@ import { Button, Card, CardContent } from '@mui/material';
 import { CompareArrows, Favorite, ShoppingBag } from '@mui/icons-material';
 
 import styles from './product-card.module.css';
-import { type Product } from '../../types/product';
+import { type Product } from '../../../core/types/product';
 import { RateStars } from '../rate-stars/rate-stars';
 import { NavLink } from 'react-router-dom';
 
-export const ProductCard = ({ product, onClickBuy }: { product: Product, onClickBuy: (product: Product) => void }) => {
+type ProductCardProps = {
+    product: Product
+    onClickBuy: (product: Product) => void
+    onClickWishlist: (product: Product) => void
+};
+
+export const ProductCard = ({ product, onClickBuy, onClickWishlist }: ProductCardProps) => {
     const linkProduct = `/products/${product.id}`;
 
     return (
@@ -39,7 +45,9 @@ export const ProductCard = ({ product, onClickBuy }: { product: Product, onClick
                 </div>
                 <div className={styles.right}>
                     <div className={styles.actionButtons}>
-                        <Button variant="contained" endIcon={<CompareArrows />}>
+                        <Button variant="contained"
+                            endIcon={<CompareArrows />}
+                            onClick={() => { onClickWishlist(product); }} >
                           Compare
                         </Button>
                         <Button variant="contained" endIcon={<Favorite />}>
@@ -49,7 +57,9 @@ export const ProductCard = ({ product, onClickBuy }: { product: Product, onClick
                     <div className={styles.price}>
                         ${product.price}
                     </div>
-                    <Button variant="contained" onClick={() => { onClickBuy(product); }} endIcon={<ShoppingBag />}>
+                    <Button variant="contained"
+                        onClick={() => { onClickBuy(product); }}
+                        endIcon={<ShoppingBag />}>
                         Add to Cart
                     </Button>
                 </div>

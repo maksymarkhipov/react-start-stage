@@ -2,7 +2,7 @@ import { Card, CardContent, IconButton } from '@mui/material';
 import { ShoppingBag } from '@mui/icons-material';
 
 import styles from './product-cell.module.css';
-import { type Product } from '../../types/product';
+import { type Product } from '../../../core/types/product';
 import { NavLink } from 'react-router-dom';
 
 export const ProductCell = ({ product, onClickBuy }: { product: Product, onClickBuy: (product: Product) => void }) => {

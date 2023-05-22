@@ -1,7 +1,7 @@
-import { type ProductCart } from '../../product/types/product-cart';
+import { type ProductCart } from '../../cart/types/product-cart';
 import { createSlice, type Draft, type PayloadAction } from '@reduxjs/toolkit';
-import { type Product } from '../../product/types/product';
-import { localLoad, localSave } from '../../service/local-storage-service';
+import { type Product } from '../../core/types/product';
+import { localLoad, localSave } from '../../core/service/local-storage-service';
 import { CART_KEY } from '../../util/constants';
 
 export type InitialType = {

@@ -1,10 +1,11 @@
 import { type RootState } from '../store';
-import { type Product } from '../../product/types/product';
+import { type Product } from '../../core/types/product';
 import { type TypeProductView } from '../../product/enums/type-product-view';
-import { type Category, type CategoryWithCount } from '../../product/types/category';
+import { type Category, type CategoryWithCount } from '../../core/types/category';
 import { type SortOption } from '../../product/enums/sort-option';
 import { type FilterRange } from '../../product/types/filter-range';
 import { createSelector } from '@reduxjs/toolkit';
+import { getCategoriesWithCount } from '../../core/service/category-with-count.service';
 
 export const selectProducts = (state: RootState): Product[] => state.shopPage.handledProducts;
 export const selectCountProduct = (state: RootState): number => state.shopPage.products.length;
@@ -13,20 +14,10 @@ export const selectTypeSort = (state: RootState): SortOption => state.shopPage.s
 export const selectFilterRanges = (state: RootState): FilterRange[] => state.shopPage.filterRanges;
 
 export const selectCategories = (state: RootState): CategoryWithCount[] => {
-    const categoriesWithCount: CategoryWithCount[] = [];
     const products = state.shopPage.products;
     const categories = state.shopPage.categories;
 
-    categories.forEach((category: Category) => {
-        const countProducts = products.filter((product: Product) => product.category === category).length;
-
-        categoriesWithCount.push({
-            title: category,
-            countProducts,
-        });
-    });
-
-    return categoriesWithCount;
+    return getCategoriesWithCount(products, categories);
 };
 
 export const selectProductsBySubstring = createSelector(

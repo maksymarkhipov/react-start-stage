@@ -1,5 +1,5 @@
 import styles from './single-product.module.css';
-import { type Product } from '../../types/product';
+import { type Product } from '../../../core/types/product';
 import { Button, Card, CardContent } from '@mui/material';
 import { CompareArrows, Favorite, ShoppingBag } from '@mui/icons-material';
 import { RateStars } from '../rate-stars/rate-stars';

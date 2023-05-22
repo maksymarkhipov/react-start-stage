@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useGetProductQuery } from '../../store/api/api-slice';
 import { SingleProduct } from '../../product/components/single-product/single-product';
 import { Header } from '../../layouts/header/header';
-import { type Product } from '../../product/types/product';
+import { type Product } from '../../core/types/product';
 import { useDispatch } from 'react-redux';
 import { addProduct } from '../../store/cart/cart-slice';
 

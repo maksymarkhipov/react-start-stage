@@ -1,5 +1,5 @@
 import styles from './product-card.module.css';
-import { type ProductCart } from '../../../product/types/product-cart';
+import { type ProductCart } from '../../types/product-cart';
 import { Counter } from '../counter/counter';
 import { useDispatch } from 'react-redux';
 import { addProduct, removeProduct } from '../../../store/cart/cart-slice';

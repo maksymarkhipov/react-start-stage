@@ -1,6 +1,6 @@
-import { type FilterRange } from '../product/types/filter-range';
-import { type Product } from '../product/types/product';
-import { SortOption } from '../product/enums/sort-option';
+import { type FilterRange } from '../../product/types/filter-range';
+import { type Product } from '../types/product';
+import { SortOption } from '../../product/enums/sort-option';
 
 function getCheckFilterRanges (filterRanges: FilterRange[]): FilterRange[] {
     return filterRanges.filter((filterRange: FilterRange) => filterRange.isActivate);
