@@ -28,7 +28,11 @@ export const compareList = createSlice({
             state.products = state.products.filter((product) => product.category !== payload);
             localSave(COMPARE_KEY, state.products);
         },
+        deleteProduct: (state: Draft<InitialType>, { payload }: PayloadAction<string>) => {
+            state.products = state.products.filter((product) => product.id !== payload);
+            localSave(COMPARE_KEY, state.products);
+        },
     },
 });
 
-export const { addCompareList, deleteByCategory } = compareList.actions;
+export const { addCompareList, deleteByCategory, deleteProduct } = compareList.actions;

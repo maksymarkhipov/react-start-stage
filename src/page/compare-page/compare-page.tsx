@@ -4,22 +4,31 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { type RootState } from '../../store/store';
 import { selectProductsByCategory } from '../../store/compare-list/compare-list-selector';
-import { SingleProduct } from '../../product/components/single-product/single-product';
 import { type Product } from '../../core/types/product';
 import { addProduct } from '../../store/cart/cart-slice';
+import { CompareProductCard } from '../../compare-list/components/compare-product-card/compare-product-card';
+import { deleteProduct } from '../../store/compare-list/compare-list-slice';
 
 export const ComparePage = () => {
     const params = useParams();
     const categoryTitle = params.categoryTitle ?? '';
-    const dispatch = useDispatch();
     const products = useSelector((state: RootState) => selectProductsByCategory(state, categoryTitle));
+    const dispatch = useDispatch();
 
     const handleClickBuy = (product: Product) => {
         dispatch(addProduct(product));
     };
 
+    const handleClickDelete = (product: Product) => {
+        dispatch(deleteProduct(product.id));
+    };
+
     const compareProducts = products.map((product) => {
-        return <SingleProduct key={product.id} product={product} onClickBuy={handleClickBuy} />;
+        return <CompareProductCard
+            key={product.id}
+            product={product}
+            onClickBuy={handleClickBuy}
+            onClickDelete={handleClickDelete} />;
     });
 
     return (
