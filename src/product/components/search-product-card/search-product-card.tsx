@@ -1,6 +1,6 @@
 
 import styles from './search-product-card.module.css';
-import { type Product } from '../../product/types/product';
+import { type Product } from '../../types/product';
 import { NavLink } from 'react-router-dom';
 
 export const SearchProductCard = ({ product }: { product: Product }) => {

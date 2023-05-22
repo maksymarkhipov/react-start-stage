@@ -18,11 +18,14 @@ export const ProductSortSelector = () => {
     return (
         <>
             <FormControl>
-                <Select
-                    value={productParameter}
-                    onChange={handleChange}
-                    displayEmpty
-                    inputProps={{ 'aria-label': 'Without label' }}
+                <Select sx={{
+                    textTransform: 'capitalize',
+                    minWidth: '160px',
+                }}
+                value={productParameter}
+                onChange={handleChange}
+                displayEmpty
+                inputProps={{ 'aria-label': 'Without label' }}
                 >
                     <MenuItem className={styles.option} value={SortOption.DEFAULT_SORTING}>
                         {SortOption.DEFAULT_SORTING}
